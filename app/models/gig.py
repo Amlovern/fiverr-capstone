@@ -17,7 +17,7 @@ class Gig(db.Model):
   updatedAt = db.Column(db.DateTime, nullable=False,server_default=func.now(), onupdate=func.now())
 
   user = db.relationship('User', back_populates='gigs')
-  orders = db.relationship('Order', back_populates='gig')
+  orders = db.relationship('Order', back_populates='gig', cascade='all, delete, delete-orphan')
   category = db.relationship('Category', back_populates='gigs')
 
   def to_dict(self):

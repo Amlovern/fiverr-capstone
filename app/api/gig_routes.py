@@ -1,8 +1,6 @@
-from crypt import methods
-from unicodedata import category
 from flask import Blueprint, request
 from flask_login import login_required
-from app.models import Gig, db
+from app.models import Gig, User, Category, db
 from app.forms import GigForm
 from .utils import validation_errors_to_error_messages
 
@@ -19,7 +17,28 @@ def get_all_gigs():
     # normalize gig dictionaries by gigId
     gigs_by_gigId = {gig['id']: gig for gig in gigs_dict_list}
 
-    return {'gigsByGigId': gigs_by_gigId}
+    gigs_by_ownerId = {}
+    for gig in gigs_dict_list:
+        if gig['ownerId'] in gigs_by_ownerId:
+            gigs_by_ownerId[gig['ownerId']].append(gig)
+        else:
+            gigs_by_ownerId[gig['ownerId']] = []
+            gigs_by_ownerId[gig['ownerId']].append(gig)
+
+    
+    gigs_by_category_id = {}
+    for gig in gigs_dict_list:
+        if gig['categoryId'] in gigs_by_category_id:
+            gigs_by_category_id[gig['categoryId']].append(gig)
+        else:
+            gigs_by_category_id[gig['categoryId']] = []
+            gigs_by_category_id[gig['categoryId']].append(gig)
+
+    return {
+        'gigsByOwnerId': gigs_by_ownerId,
+        'gigsByCategoryId': gigs_by_category_id,
+        'gigsByGigId': gigs_by_gigId
+    }
 
 
 # Get One Gig by Gig ID
