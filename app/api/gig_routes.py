@@ -1,4 +1,5 @@
 from crypt import methods
+from unicodedata import category
 from flask import Blueprint, request
 from flask_login import login_required
 from app.models import Gig, db
@@ -8,7 +9,7 @@ from .utils import validation_errors_to_error_messages
 gig_routes = Blueprint('gig', __name__)
 
 # Get All Gigs
-@gig_routes.route('/')
+@gig_routes.route('')
 def get_all_gigs():
     gigs = Gig.query.all()
 
@@ -29,7 +30,7 @@ def get_one_gig(id):
 
 
 # Create a New Gig
-@gig_routes.route('/', methods=['POST'])
+@gig_routes.route('', methods=['POST'])
 @login_required
 def create_new_gig():
 
@@ -91,3 +92,53 @@ def delete_gig(id):
     db.session.delete(gig)
     db.session.commit()
     return {'message': 'Success'}
+
+
+# TEST ROUTES
+
+# GET ALL GIGS
+# fetch('/api/gig').then(res=> res.json()).then(data=> console.log(data))
+
+# GET ONE GIG
+# fetch('/api/gig/2').then(res=> res.json()).then(data=> console.log(data))
+
+# POST NEW GIG
+# fetch('/api/gig', {
+#     method: 'POST',
+#     headers: {"Content-Type": "application/json"},
+#     body: JSON.stringify({
+#         ownerId: 1,
+#         categoryId: 2,
+#         description: 'This is a new Test Gig.',
+#         price: 22,
+#         deliveryTimeline: 8,
+#         returnTimeline: 1
+#     })
+# })
+# .then((res)=> res.json())
+# .then((data)=> console.log(data))
+
+# PATCH UPDATE GIG
+#Check if login required works
+# fetch('api/gig/5', {
+#     method: 'PATCH',
+#     headers: {"Content-Type": "application/json"},
+#     body: JSON.stringify({
+#         ownerId: 1,
+#         categoryId: 2,
+#         description: 'This is a test to make sure the update works!',
+#         price: 14,
+#         deliveryTimeline: 18,
+#         returnTimeline: 6
+#     })
+# })
+# .then((res)=> res.json())
+# .then((data)=> console.log(data))
+
+
+# DELETE GIG
+# fetch('/api/gig/5', {
+#     method: "DELETE"
+# })
+# .then((res)=> res.json())
+# .then((data)=> console.log(data))
