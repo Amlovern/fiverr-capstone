@@ -10,3 +10,11 @@ class Category(db.Model):
   updatedAt = db.Column(db.DateTime, nullable=False,server_default=func.now(), onupdate=func.now())
 
   gigs = db.relationship('Gig', back_populates='category')
+
+  def to_dict(self):
+    return {
+      'id': self.id,
+      'name': self.name,
+      'createdAt': self.createdAt,
+      'updatedAt': self.updatedAt
+    }

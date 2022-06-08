@@ -6,7 +6,15 @@ import './index.css';
 import App from './App';
 import configureStore from './store';
 
+// Import redux actions
+import * as gigActions from './store/gig'
+
 const store = configureStore();
+
+if (process.env.NODE_ENV !== 'production') {
+  window.store = store; //easy access to store and its methods in browser console
+  window.gigActions = gigActions //test gig redux state
+}
 
 function Root() {
   return (

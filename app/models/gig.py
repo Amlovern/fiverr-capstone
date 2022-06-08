@@ -1,3 +1,4 @@
+from unicodedata import category
 from .db import db
 from sqlalchemy.sql import func
 
@@ -16,5 +17,19 @@ class Gig(db.Model):
   updatedAt = db.Column(db.DateTime, nullable=False,server_default=func.now(), onupdate=func.now())
 
   user = db.relationship('User', back_populates='gigs')
-  orders = db.relationship('Order', back_populates='gig')
+  orders = db.relationship('Order', back_populates='gig', cascade='all, delete, delete-orphan')
   category = db.relationship('Category', back_populates='gigs')
+
+  def to_dict(self):
+    return {
+      'id': self.id,
+      'ownerId': self.ownerId,
+      'categoryId': self.categoryId,
+      'queue': self.queue,
+      'description': self.description,
+      'price': self.price,
+      'deliveryTimeline': self.deliveryTimeline,
+      'returnTimeline': self.returnTimeline,
+      'createdAt': self.createdAt,
+      'updatedAt': self.updatedAt
+    }

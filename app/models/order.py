@@ -15,3 +15,14 @@ class Order(db.Model):
 
   user = db.relationship('User', back_populates='orders')
   gig = db.relationship('Gig', back_populates='orders')
+
+  def to_dict(self):
+    return {
+      'id': self.id,
+      'userId': self.userId,
+      'gigId': self.gigId,
+      'placed': self.placed,
+      'due': self.due,
+      'createdAt': self.createdAt,
+      'updatedAt': self.updatedAt
+    }
