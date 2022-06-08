@@ -311,7 +311,7 @@ export default gigReducer;
 
 // UPDATE GIG
 // window.store.dispatch(
-//     window.gigActions.updateOneGigThunk(window.store.getState().gig.gigsByGigId['7'], {
+//     window.gigActions.updateOneGigThunk(window.store.getState().gig.gigsByGigId['5'], {
 //         ownerId: 1,
 //         categoryId: 2,
 //         description: 'This is an updated test gig for the redux store.',
@@ -321,5 +321,5 @@ export default gigReducer;
 // })).catch(async (res) => { const resBody= await res.json(); console.log(res,resBody)})
 
 // DELETE GIG
-// window.store.dispatch(window.gigActions.deleteOneGigThunk(2, 1, 7))
+// window.store.dispatch(window.gigActions.deleteOneGigThunk(2, 1, 5))
 // .catch(async (res) => { const resBody= await res.json(); console.log(res,resBody)})
