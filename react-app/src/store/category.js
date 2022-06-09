@@ -36,12 +36,14 @@ const categoryReducer = (state = initialState, action) => {
 
     const newState = {
         ...state,
-        categoriesByCategoryId
+        categoriesByCategoryId: categoriesByCategoryId
     }
 
     Object.keys(state).forEach((key) => {
         let category = state[key];
-        newState[category.id] = { ...category }
+        if (category.id) {
+            newState[category.id] = { ...category }
+        }
     })
 
     switch (action.type) {
@@ -50,7 +52,7 @@ const categoryReducer = (state = initialState, action) => {
             return newState
 
         default:
-            return newState
+            return state
     }
 }
 
