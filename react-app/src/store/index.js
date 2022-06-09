@@ -2,10 +2,12 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import session from './session'
 import gigReducer from './gig';
+import categoryReducer from './category';
 
 const rootReducer = combineReducers({
   session,
-  gig: gigReducer
+  gig: gigReducer,
+  category: categoryReducer
 });
 
 

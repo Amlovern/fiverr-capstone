@@ -5,6 +5,7 @@ def seed_gigs():
   christian = Gig(
     ownerId=1,
     categoryId=3,
+    title='Game Creation for those who want the best.',
     queue=2,
     description='I can make you the game of your dreams. My epic skills are beyond your comprehension.',
     price=500,
@@ -14,6 +15,7 @@ def seed_gigs():
   james = Gig(
     ownerId=4,
     categoryId=4,
+    title='Anime yourself!',
     queue=10,
     description='I can make you into an anime character. I am able to draw any style from your favorite studios.',
     price=25,
@@ -23,6 +25,7 @@ def seed_gigs():
   sherman = Gig(
     ownerId=2,
     categoryId=4,
+    title='Your song can be an anime.',
     queue=1,
     description='I can create an AMV to your favorite song. No matter the song or anime, I can make it work.',
     price=5,
@@ -32,6 +35,7 @@ def seed_gigs():
   brian = Gig(
     ownerId=3,
     categoryId=1,
+    title='Custom mini for D&D',
     queue=0,
     description='I can 3D print you a custom mini for your next D&D campaign.',
     price=43,

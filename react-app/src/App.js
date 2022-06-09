@@ -11,15 +11,20 @@ import SplashPage from './components/SplashPage';
 import GigDetail from './components/GigDetail';
 import { authenticate } from './store/session';
 
+import * as categoryActions from './store/category'
+
 function App() {
-  const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     (async() => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
+
+    // Eager load Categories
+    dispatch(categoryActions.getAllCategoriesThunk()).catch((res) => console.log(res));
   }, [dispatch]);
 
   if (!loaded) {
@@ -45,7 +50,7 @@ function App() {
         <Route path='/' exact={true} >
           <SplashPage />
         </Route>
-        <Route path='/gig' >
+        <Route path='/gigs/:gigId' >
           <GigDetail />
         </Route>
       </Switch>
