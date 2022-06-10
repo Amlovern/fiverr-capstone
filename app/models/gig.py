@@ -9,6 +9,7 @@ class Gig(db.Model):
   ownerId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
   categoryId = db.Column(db.Integer, db.ForeignKey('categories.id'), nullable=False)
   title = db.Column(db.String(50), nullable=False)
+  image = db.Column(db.String(255), nullable=False)
   queue = db.Column(db.Integer, nullable=False)
   description = db.Column(db.Text)
   price = db.Column(db.Integer, nullable=False)
@@ -27,6 +28,7 @@ class Gig(db.Model):
       'ownerId': self.ownerId,
       'categoryId': self.categoryId,
       'title': self.title,
+      'image': self.image,
       'queue': self.queue,
       'description': self.description,
       'price': self.price,

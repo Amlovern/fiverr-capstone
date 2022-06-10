@@ -9,6 +9,7 @@ class GigForm(FlaskForm):
     title = StringField('title', validators=[DataRequired(),
         Length(min=1, max=50, message='Title must be less than 50 characters.')
     ])
+    image = StringField('image', validators=[DataRequired()])
     description = TextAreaField('description', validators=[
         Length(min=0, max=500, message='Description must be less than 500 characters.')
     ])
