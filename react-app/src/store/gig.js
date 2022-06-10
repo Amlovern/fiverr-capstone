@@ -53,6 +53,7 @@ export const getOneGigThunk = (gigId) => async (dispatch) => {
 };
 
 export const addNewGigThunk = (formData) => async (dispatch) => {
+    console.log(formData)
     const response = await fetch('/api/gig', {
         method: 'POST',
         headers: {
@@ -61,6 +62,8 @@ export const addNewGigThunk = (formData) => async (dispatch) => {
         body: JSON.stringify({
             ownerId: formData.ownerId,
             categoryId: formData.categoryId,
+            title: formData.title,
+            imageUrl: formData.image,
             queue: formData.queue,
             description: formData.description,
             price: formData.price,
@@ -72,7 +75,7 @@ export const addNewGigThunk = (formData) => async (dispatch) => {
     if (response.ok) {
         const newGig = await response.json();
         dispatch(addGig(newGig.id, newGig.ownerId, newGig.categoryId, newGig));
-        return null;
+        return newGig;
     } else if (response.status < 500) {
         const resBody = await response.json();
         if (resBody.errors) {
@@ -219,7 +222,11 @@ const gigReducer = (state = initialState, action) => {
             ownerId = action.payload.ownerId;
             categoryId = action.payload.categoryId;
 
-            newState.gigsByOwnerId[ownerId].push(action.payload.gig);
+            if (newState.gigsByOwnerId[ownerId]) {
+                newState.gigsByOwnerId[ownerId].push(action.payload.gig);
+            } else {
+                newState.gigsByOwnerId[ownerId] = [action.payload.gig]
+            }
             newState.gigsByCategoryId[categoryId].push(action.payload.gig);
             newState.gigsByGigId[gigId] = action.payload.gig
 
@@ -303,6 +310,8 @@ export default gigReducer;
 // window.store.dispatch(window.gigActions.addNewGigThunk({
 //     ownerId: 1,
 //     categoryId: 3,
+//     title: 'Test Gig',
+//     imageUrl: 'https://www.denofgeek.com/wp-content/uploads/2013/07/steins-gate-main.jpg',
 //     description: 'This is a test gig for the redux store.',
 //     price: 10,
 //     deliveryTimeline: 9,

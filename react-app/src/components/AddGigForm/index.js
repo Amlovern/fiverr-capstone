@@ -1,22 +1,26 @@
 import './AddGigForm.css';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import * as gigActions from '../../store/gig';
 
 export default function AddGigForm() {
     const dispatch = useDispatch();
+    const history = useHistory();
     const currentUser = useSelector((state) => state.session.user)
+    const gigs = useSelector((state) => state.gig);
     const categories = useSelector((state) => state.category.categoriesByCategoryId)
 
     const [title, setTitle] = useState('');
-    const [category, setCategory] = useState('');
+    const [category, setCategory] = useState(1);
     const [imageUrl, setImageUrl] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
     const [deliveryTimeline, setDeliveryTimeline] = useState('');
     const [returnTimeline, setReturnTimeline] = useState('');
+    const [newGigId, setNewGigId] = useState('');
     const [addErrors, setAddErrors] = useState([])
 
     const categoriesList = []
@@ -24,13 +28,19 @@ export default function AddGigForm() {
         categoriesList.push(category)
     })
 
+    useEffect(() => {
+        dispatch(gigActions.getAllGigsThunk())
+    }, [dispatch])
+
+    // console.log(categoriesList)
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         setAddErrors([])
 
-        const formdata = {
+        const formData = {
             ownerId: currentUser.id,
-            categoryId: category,
+            categoryId: parseInt(category),
             title: title,
             image: imageUrl,
             description: description,
@@ -39,11 +49,21 @@ export default function AddGigForm() {
             returnTimeline: parseInt(returnTimeline)
         }
 
-        console.log('FORM DATA', formdata)
-
-    }
+        try {
+            const data = dispatch(gigActions.addNewGigThunk(formData));
+            if (data) {
+                data.then(res => history.push(`/gigs/${res.id}`))
+            } else {
+                setAddErrors(data.errors);
+                return;
+            }
+        } catch (errorResponse) {
+            setAddErrors(['Something went wrong, please try again.']);
+            console.log('Failed Request: ', errorResponse)
+        };
+    };
     
-    if (!currentUser) {
+    if (!currentUser || !gigs) {
         return null
     }
 
@@ -51,6 +71,15 @@ export default function AddGigForm() {
         <>
             <form className='add-gig-form' onSubmit={handleSubmit}>
                 <h1 className='add-gig-header'>This is the Create a Gig Form!</h1>
+                {addErrors?.length > 0 && (
+                    <div className='resource-error-container'>
+                        {addErrors?.map((error, idx) => (
+                            <p className='resource-error-message' key={idx}>
+                                {error?.split(': ')[1]}
+                            </p>
+                        ))}
+                    </div>
+                )}
 
                 <div className='input-field-div'>
                     <label className='label-for-input-field'>Title</label>
@@ -67,7 +96,7 @@ export default function AddGigForm() {
                     <label className='label-for-input-field'>Category</label>
                     <select 
                     className='input-field'
-                    onSelect={(e) => setCategory(e.target.value)}
+                    onChange={(e) => setCategory(e.target.value)}
                     >
                         {categoriesList.map((category, i) => (
                             <option key={i} value={category.id}>

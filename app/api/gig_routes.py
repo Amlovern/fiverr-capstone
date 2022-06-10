@@ -57,15 +57,20 @@ def create_new_gig():
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
+        print(form.data)
         params = dict(
             ownerId=form.data['ownerId'],
             categoryId=form.data['categoryId'],
+            title=form.data['title'],
+            image=form.data['imageUrl'],
             queue=0,
             description=form.data['description'],
             price=form.data['price'],
             deliveryTimeline=form.data['deliveryTimeline'],
             returnTimeline=form.data['returnTimeline']
         )
+
+        print('PARAMS', params)
 
         new_gig = Gig(**params)
         db.session.add(new_gig)
