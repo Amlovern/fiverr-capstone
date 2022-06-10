@@ -16,8 +16,6 @@ export default function GigDetail() {
     const gigId = params.gigId;
     const currentGig = gigs.gigsByGigId[gigId];
 
-    console.log(currentGig?.image)
-
 
     useEffect(() => {
         dispatch(gigActions.getAllGigsThunk())

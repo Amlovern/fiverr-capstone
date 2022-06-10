@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import SplashPage from './components/SplashPage';
 import GigDetail from './components/GigDetail';
+import AddGigForm from './components/AddGigForm';
 import { authenticate } from './store/session';
 
 import * as categoryActions from './store/category'
@@ -50,6 +51,9 @@ function App() {
         <Route path='/' exact={true} >
           <SplashPage />
         </Route>
+        <ProtectedRoute path='/gigs/new' exact={true} >
+          <AddGigForm />
+        </ProtectedRoute>
         <Route path='/gigs/:gigId' >
           <GigDetail />
         </Route>
