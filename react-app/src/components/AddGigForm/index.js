@@ -20,7 +20,6 @@ export default function AddGigForm() {
     const [price, setPrice] = useState('');
     const [deliveryTimeline, setDeliveryTimeline] = useState('');
     const [returnTimeline, setReturnTimeline] = useState('');
-    const [newGigId, setNewGigId] = useState('');
     const [addErrors, setAddErrors] = useState([])
 
     const categoriesList = []
@@ -62,6 +61,11 @@ export default function AddGigForm() {
             console.log('Failed Request: ', errorResponse)
         };
     };
+
+    const handleCancel = (e) => {
+        e.preventDefault()
+        return history.goBack()
+    }
     
     if (!currentUser || !gigs) {
         return null
@@ -165,6 +169,7 @@ export default function AddGigForm() {
                     <button
                         className='cancel-btn'
                         type='button'
+                        onClick={handleCancel}
                     >
                         Cancel
                     </button>

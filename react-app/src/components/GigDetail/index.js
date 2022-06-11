@@ -1,18 +1,25 @@
 import './GigDetail.css'
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
 import * as gigActions from '../../store/gig';
 import * as sessionActions from '../../store/session';
  
 export default function GigDetail() {
     const dispatch = useDispatch();
+    const history = useHistory();
+
     const gigs = useSelector((state) => state.gig);
     const categories = useSelector((state) => state.category.categoriesByCategoryId)
-    const gigOwner = useSelector((state) => state.session.gigUser)
+    const gigOwner = useSelector((state) => state.session.gigUser);
+    const sessionUser = useSelector((state) => state.session.user);
+
+    const [showDelete, setShowDelete] = useState(true)
+
     const params = useParams();
+
     const gigId = params.gigId;
     const currentGig = gigs.gigsByGigId[gigId];
 
@@ -28,6 +35,27 @@ export default function GigDetail() {
             dispatch(sessionActions.getUserThunk(currentGig.ownerId))
         }
     }, [currentGig])
+
+    const handleDelete = (e) => {
+        e.preventDefault();
+        
+        const errors = dispatch(gigActions.deleteOneGigThunk(currentGig?.categoryId, gigOwner?.id, gigId));
+        if (errors) {
+            errors.then(res => history.push('/'))
+        } else {
+            console.log(errors)
+        }
+    }
+
+    const displayDelete = (e) => {
+        e.preventDefault()
+        if (showDelete === true) {
+            setShowDelete(false)
+        } else {
+            setShowDelete(true)
+        }
+        console.log(showDelete)
+    }
 
     if (!gigs) {
         return null
@@ -89,6 +117,37 @@ export default function GigDetail() {
                                 <span className='gig-cancellation'>{currentGig?.returnTimeline} Days</span>
                             </div>
                         </div>
+                        {sessionUser?.id === gigOwner?.id && (
+                            <>
+                                <div>
+                                    <button
+                                        className='gig-delete-btn'
+                                        type='button'
+                                        onClick={displayDelete}
+                                        >
+                                        Delete This Gig
+                                    </button>
+                                </div>
+                                {showDelete && (
+                                    <div>
+                                        <button
+                                            className='cancel-btn'
+                                            type='button'
+                                            onClick={setShowDelete(false)}
+                                        >
+                                            Cancel
+                                        </button>
+                                        <button
+                                            className='confirm-btn'
+                                            type='button'
+                                            onClick={handleDelete}
+                                        >
+                                            Confirm
+                                        </button>
+                                    </div>
+                                )}
+                            </>
+                        )}
                     </aside>
                 </div>
             </div>
