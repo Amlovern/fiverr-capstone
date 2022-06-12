@@ -16,12 +16,13 @@ export default function GigDetail() {
     const gigOwner = useSelector((state) => state.session.gigUser);
     const sessionUser = useSelector((state) => state.session.user);
 
-    const [showDelete, setShowDelete] = useState(true)
+    const [showDelete, setShowDelete] = useState(false)
 
     const params = useParams();
 
     const gigId = params.gigId;
     const currentGig = gigs.gigsByGigId[gigId];
+
 
 
     useEffect(() => {
@@ -54,7 +55,6 @@ export default function GigDetail() {
         } else {
             setShowDelete(true)
         }
-        console.log(showDelete)
     }
 
     if (!gigs) {
@@ -130,10 +130,11 @@ export default function GigDetail() {
                                 </div>
                                 {showDelete && (
                                     <div>
+                                        <span className='delete-warning'>Are you sure you want to delete this gig and cancel any outstanding orders?</span>
                                         <button
                                             className='cancel-btn'
                                             type='button'
-                                            onClick={setShowDelete(false)}
+                                            onClick={displayDelete}
                                         >
                                             Cancel
                                         </button>
