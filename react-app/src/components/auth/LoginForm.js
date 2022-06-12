@@ -1,10 +1,13 @@
+import './auth.css';
+
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import * as sessionActions from '../../store/session';
 
 const LoginForm = () => {
   const user = useSelector(state => state.session.user);
+  const history = useHistory();
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
   const [credential, setCredential] = useState('');
@@ -44,47 +47,67 @@ const LoginForm = () => {
     }
   }
 
+  const registerRedirect = (e) => {
+    e.preventDefault()
+    return history.push('/sign-up')
+  }
+
   if (user) {
     return <Redirect to='/' />;
   }
 
   return (
-    <form onSubmit={onLogin} autoComplete='off'>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
-      <div>
-        <label htmlFor='credential'>Email / Username</label>
-        <input
-          name='credential'
-          type='text'
-          placeholder='Email / Username'
-          value={credential}
-          onChange={updateCredential}
-        />
-      </div>
-      <div>
-        <label htmlFor='password'>Password</label>
-        <input
-          name='password'
-          type='password'
-          placeholder='Password'
-          value={password}
-          onChange={updatePassword}
-        />
-        <button type='submit'>Login</button>
-      </div>
-      <div>
-        <button
-          type='button'
-          onClick={demoLogin}
-        >
-          Demo Log In
-        </button>
-      </div>
-    </form>
+    <div className='login-page'>
+      <form onSubmit={onLogin} autoComplete='off' className='login-form'>
+        <section className='form-header'>Sign In to Nerdrr</section>
+        <div>
+          {errors.map((error, ind) => (
+            <div key={ind}>{error}</div>
+            ))}
+        </div>
+        <div className='input-wrapper'>
+          <label htmlFor='credential'>Email / Username</label>
+          <input
+            className='login-input'
+            name='credential'
+            type='text'
+            placeholder='Email / Username'
+            value={credential}
+            onChange={updateCredential}
+            />
+        </div>
+        <div className='input-wrapper'>
+          <label htmlFor='password'>Password</label>
+          <input
+            className='login-input'
+            name='password'
+            type='password'
+            placeholder='Password'
+            value={password}
+            onChange={updatePassword}
+            />
+        </div>
+        <div className='login-btn-container'>
+          <button className='login-btn' type='submit'>Login</button>
+          <button
+            className='login-btn'
+            type='button'
+            onClick={demoLogin}
+            >
+            Demo Log In
+          </button>
+        </div>
+      </form>
+        <div className='login-footer'>
+          <p>Not a member yet?</p>
+          <button 
+          className='login-register-redirect'
+          onClick={registerRedirect}
+          >
+          Join now
+          </button>
+        </div>
+    </div>
   );
 };
 
