@@ -1,0 +1,77 @@
+.add-gig-form-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 24px;
+}
+
+.add-gig-header {
+    padding: 32px 0;
+    text-align: center;
+    color: #404145;
+    font-size: 24px;
+    line-height: 130%;
+    font-weight: 700;
+}
+
+.add-gig-form {
+    padding: 0 36px 24px;
+    width: 24%;
+}
+
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 16px;
+    position: relative;
+}
+
+.input-field {
+    font-size: 16px;
+    line-height: 24px;
+    padding: 8px 12px;
+    margin: 0;
+    resize: none;
+    border: 1px solid #c5c6c9;
+    border-radius: 4px;
+    box-shadow: none;
+    color: #404145;
+    transition: .15s ease-in-out;
+}
+
+.input-field:hover {
+    outline: none;
+    border-color: #95979d;
+    box-shadow: none;
+}
+
+.add-gig-btn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-gig-btn {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    padding: 12px 24px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 100%;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: 70ms cubic-bezier(.75,0,.25,1);
+    background-color: #1dbf73;
+    color: #fff;
+    margin-bottom: 16px;
+}
+
+.add-gig-btn:hover {
+    background: #19a463;
+}

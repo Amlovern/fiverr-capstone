@@ -50,13 +50,15 @@
     border-color: #fff;
     border-radius: 4px;
     cursor: pointer;
-    color: #19a463;
+    color: #1dbf73;
     font-size: 14px;
     font-weight: 700;
     padding: 7px 20px;
     text-align: center;
     text-decoration: none;
     transition: all .2s ease;
+    background: none;
+    border-color: #1dbf73;
 }
 
 .signup-btn:hover {

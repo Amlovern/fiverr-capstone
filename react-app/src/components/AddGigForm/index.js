@@ -72,9 +72,9 @@ export default function AddGigForm() {
     }
 
     return (
-        <>
+        <div className='add-gig-form-page'>
             <form className='add-gig-form' onSubmit={handleSubmit}>
-                <h1 className='add-gig-header'>This is the Create a Gig Form!</h1>
+                <h1 className='add-gig-header'>Create Your Gig!</h1>
                 {addErrors?.length > 0 && (
                     <div className='resource-error-container'>
                         {addErrors?.map((error, idx) => (
@@ -85,7 +85,7 @@ export default function AddGigForm() {
                     </div>
                 )}
 
-                <div className='input-field-div'>
+                <div className='input-wrapper'>
                     <label className='label-for-input-field'>Title</label>
                     <input
                         className='input-field'
@@ -96,7 +96,7 @@ export default function AddGigForm() {
                         required
                     />
                 </div>
-                <div className='input-field-div'>
+                <div className='input-wrapper'>
                     <label className='label-for-input-field'>Category</label>
                     <select 
                     className='input-field'
@@ -109,7 +109,7 @@ export default function AddGigForm() {
                         ))}
                     </select>
                 </div>
-                <div className='input-field-div'>
+                <div className='input-wrapper'>
                     <label className='label-for-input-field'>Image URL</label>
                     <input
                         className='input-field'
@@ -120,7 +120,7 @@ export default function AddGigForm() {
                         required
                     />
                 </div>
-                <div className='input-field-div'>
+                <div className='input-wrapper'>
                     <label className='label-for-input-field'>Description</label>
                     <textarea 
                         className='input-field'
@@ -131,7 +131,7 @@ export default function AddGigForm() {
                         rows={5}
                     /> 
                 </div>
-                <div className='input-field-div'>
+                <div className='input-wrapper'>
                     <label className='label-for-input-field'>Price</label>
                     <input 
                         className='input-field'
@@ -142,47 +142,47 @@ export default function AddGigForm() {
                         required
                     />
                 </div>
-                <div className='input-field-div'>
+                <div className='input-wrapper'>
                     <label className='label-for-input-field'>Delivery Timeline</label>
                     <input 
                         className='input-field'
                         type='number'
                         onChange={(e) => setDeliveryTimeline(e.target.value)}
                         value={deliveryTimeline}
-                        placeholder='Expected delivery timeline?'
+                        placeholder='Expected delivery timeline? (In days)'
                         required
                     />
                 </div>
-                <div className='input-field-div'>
+                <div className='input-wrapper'>
                     <label className='label-for-input-field'>Cancellation Timeline</label>
                     <input 
                         className='input-field'
                         type='number'
                         onChange={(e) => setReturnTimeline(e.target.value)}
                         value={returnTimeline}
-                        placeholder='Order cancellation timeline?'
+                        placeholder='Order cancellation timeline? (In days)'
                         required
                     />
                 </div>
 
-                <div>
+                <div className='add-gig-btn-container'>
                     <button
-                        className='cancel-btn'
+                        className='add-gig-btn'
                         type='button'
                         onClick={handleCancel}
                     >
                         Cancel
                     </button>
                 </div>
-                <div>
+                <div className='add-gig-btn-container'>
                     <button
-                        className='submit-btn'
+                        className='add-gig-btn'
                         type='submit'
                     >
                         Submit
                     </button>
                 </div>
             </form>
-        </>
+        </div>
     )
 }
