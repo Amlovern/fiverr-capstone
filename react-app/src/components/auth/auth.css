@@ -74,11 +74,11 @@
     margin-bottom: 16px;
 }
 
-.login-btn:hover {
+.login-btn:hover, .sign-up-btn:hover {
     background: #19a463;
 }
 
-.login-footer {
+.login-footer, .sign-up-footer {
     padding: 12px 0;
     border-top: 1px solid #e4e5e7;
     display: flex;
@@ -89,7 +89,7 @@
     width: 24%;
 }
 
-.login-register-redirect {
+.login-register-redirect, .sign-up-login-redirect {
     padding-left: 4px;
     color: #1dbf73;
     border: none;
@@ -99,6 +99,6 @@
     cursor: pointer;
 }
 
-.login-register-redirect:hover {
+.login-register-redirect:hover, .sign-up-login-redirect:hover {
     text-decoration: underline;
 }

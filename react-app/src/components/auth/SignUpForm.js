@@ -121,7 +121,7 @@ const SignUpForm = () => {
         <div className='sign-up-btn-container'>
           <button className='sign-up-btn' type='submit'>Join</button>
           <button
-            className='login-btn'
+            className='sign-up-btn'
             type='button'
             onClick={demoLogin}
             >
@@ -129,10 +129,10 @@ const SignUpForm = () => {
           </button>
         </div>
       </form>
-      <div className='login-footer'>
+      <div className='sign-up-footer'>
           <p>Already a member?</p>
           <button 
-          className='login-register-redirect'
+          className='sign-up-login-redirect'
           onClick={loginRedirect}
           >
           Sign in
