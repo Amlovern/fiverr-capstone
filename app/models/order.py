@@ -8,6 +8,7 @@ class Order(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
   gigId = db.Column(db.Integer, db.ForeignKey('gigs.id'), nullable=False)
+  deliveryInstructions = db.Column(db.Text)
   placed = db.Column(db.DateTime, nullable=False)
   due = db.Column(db.DateTime, nullable=False)
   createdAt = db.Column(db.DateTime, nullable=False,server_default=func.now())
@@ -21,6 +22,7 @@ class Order(db.Model):
       'id': self.id,
       'userId': self.userId,
       'gigId': self.gigId,
+      'deliveryInstructions': self.deliveryInstructions,
       'placed': self.placed,
       'due': self.due,
       'createdAt': self.createdAt,

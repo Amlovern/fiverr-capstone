@@ -1,4 +1,3 @@
-from typing import Text
 from flask_wtf import FlaskForm
 from wtforms.fields import IntegerField, TextAreaField, StringField
 from wtforms.validators import DataRequired, Length, Regexp, NumberRange
