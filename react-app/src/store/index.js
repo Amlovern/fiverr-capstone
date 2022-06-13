@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import session from './session'
 import gigReducer from './gig';
 import categoryReducer from './category';
+import orderReducer from './order';
 
 const rootReducer = combineReducers({
   session,
   gig: gigReducer,
-  category: categoryReducer
+  category: categoryReducer,
+  order: orderReducer
 });
 
 
