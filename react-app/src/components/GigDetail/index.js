@@ -119,27 +119,29 @@ export default function GigDetail() {
                         </div>
                         {sessionUser?.id === gigOwner?.id && (
                             <>
-                                <div>
-                                    <button
-                                        className='gig-delete-btn'
-                                        type='button'
-                                        onClick={displayDelete}
-                                        >
-                                        Delete This Gig
-                                    </button>
-                                </div>
-                                {showDelete && (
+                                {!showDelete && (
                                     <div>
+                                        <button
+                                            className='gig-delete-btn'
+                                            type='button'
+                                            onClick={displayDelete}
+                                            >
+                                            Delete This Gig
+                                        </button>
+                                    </div>
+                                )}
+                                {showDelete && (
+                                    <div className='delete-gig-container'>
                                         <span className='delete-warning'>Are you sure you want to delete this gig and cancel any outstanding orders?</span>
                                         <button
-                                            className='cancel-btn'
+                                            className='delete-cancel-btn'
                                             type='button'
                                             onClick={displayDelete}
                                         >
                                             Cancel
                                         </button>
                                         <button
-                                            className='confirm-btn'
+                                            className='delete-confirm-btn'
                                             type='button'
                                             onClick={handleDelete}
                                         >
