@@ -96,6 +96,8 @@ def update_gig(id):
         session_gig.ownerId = form.data['ownerId']
         session_gig.categoryId = form.data['categoryId']
         session_gig.description = form.data['description']
+        session_gig.title=form.data['title']
+        session_gig.image=form.data['imageUrl']
         session_gig.price = form.data['price']
         session_gig.deliveryTimeline = form.data['deliveryTimeline']
         session_gig.returnTimeline = form.data['returnTimeline']

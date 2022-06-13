@@ -10,6 +10,7 @@ import User from './components/User';
 import SplashPage from './components/SplashPage';
 import GigDetail from './components/GigDetail';
 import AddGigForm from './components/AddGigForm';
+import UpdateGigForm from './components/UpdateGigForm';
 import { authenticate } from './store/session';
 
 import * as categoryActions from './store/category'
@@ -53,6 +54,9 @@ function App() {
         </Route>
         <ProtectedRoute path='/gigs/new' exact={true} >
           <AddGigForm />
+        </ProtectedRoute>
+        <ProtectedRoute path='/gigs/:gigId/update' exact={true}>
+          <UpdateGigForm />
         </ProtectedRoute>
         <Route path='/gigs/:gigId' >
           <GigDetail />

@@ -96,7 +96,9 @@ export const updateOneGigThunk = (gig, formData) => async (dispatch) => {
         },
         body: JSON.stringify({
             ownerId: formData.ownerId,
-            categoryId: formData.categoryId,
+            categoryId: formData.category,
+            title: formData.title,
+            imageUrl: formData.image,
             queue: formData.queue,
             description: formData.description,
             price: formData.price,
@@ -108,7 +110,7 @@ export const updateOneGigThunk = (gig, formData) => async (dispatch) => {
     if (response.ok) {
         const updatedGig = await response.json();
         dispatch(updateGig(oldCategoryId, updatedGig.categoryId, gig.id, updatedGig))
-        return null;
+        return updatedGig;
     } else if (response.status < 500) {
         const resBody = await response.json();
         if (resBody.errors) {

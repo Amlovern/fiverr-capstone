@@ -172,7 +172,7 @@
     object-fit: contain
 }
 
-.gig-delete-btn, .delete-cancel-btn {
+.gig-delete-btn, .delete-cancel-btn, .gig-update-btn {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -192,7 +192,7 @@
     margin-top: 16px;
 }
 
-.gig-delete-btn:hover, .delete-cancel-btn:hover {
+.gig-delete-btn:hover, .delete-cancel-btn:hover, .gig-update-btn:hover {
     background: #19a463;
 }
 

@@ -57,6 +57,11 @@ export default function GigDetail() {
         }
     }
 
+    const handleUpdate = (e) => {
+        e.preventDefault()
+        history.push(`/gigs/${gigId}/update`)
+    }
+
     if (!gigs) {
         return null
     }
@@ -119,6 +124,14 @@ export default function GigDetail() {
                         </div>
                         {sessionUser?.id === gigOwner?.id && (
                             <>
+                                <div>
+                                    <button
+                                        className='gig-update-btn'
+                                        type='button'
+                                        onClick={handleUpdate}
+                                    >Update This Gig</button>
+                                </div>
+
                                 {!showDelete && (
                                     <div>
                                         <button
