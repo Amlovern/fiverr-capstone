@@ -42,7 +42,7 @@ export const getAllOrdersThunk = (userId) => async (dispatch) => {
 };
 
 export const getOneOrderThunk = (orderId) => async (dispatch) => {
-    const response = await fetch(`/api/${orderId}`);
+    const response = await fetch(`/api/order/${orderId}`);
 
     if (response.ok) {
         const orderData = await response.json();
@@ -146,10 +146,12 @@ const orderReducer = (state = initialState, action) => {
 
     Object.keys(state.ordersByOrderId).forEach((key) => {
         let orderArr = [];
-        state.ordersByOrderId[key].forEach((order) => {
-            orderArr.push({ ...order });
-        });
-        ordersByOrderId[key] = orderArr;
+        if (state.ordersByOrderId[key]) {
+            state.ordersByOrderId[key].forEach((order) => {
+                orderArr.push({ ...order });
+                ordersByOrderId[key] = orderArr;
+            });
+        }
     });
 
     const newState = {

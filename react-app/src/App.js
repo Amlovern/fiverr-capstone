@@ -59,12 +59,12 @@ function App() {
         <ProtectedRoute path='/gigs/:gigId/update' exact={true}>
           <UpdateGigForm />
         </ProtectedRoute>
-        <Route path='/gigs/:gigId' >
-          <GigDetail />
-        </Route>
         <ProtectedRoute path='/gigs/:gigId/new-order' exact={true}>
           <AddOrderForm />
         </ProtectedRoute>
+        <Route path='/gigs/:gigId' >
+          <GigDetail />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

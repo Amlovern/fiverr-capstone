@@ -8,5 +8,5 @@ class OrderForm(FlaskForm):
     deliveryInstructions = TextAreaField('deliveryInstructions', validators=[
         Length(min=0, max=400, message='Delivery Instructions must be less than 400 characters.')
     ])
-    placed = DateField('placed', validators=[DataRequired(message='Please enter a valid Order Placed Date')])
-    due = DateField('due', validators=[DataRequired(message='Please enter a valid Order Due Date')])
+    placed = TextAreaField('placed', validators=[DataRequired(message='Please enter a valid Order Placed Date')])
+    due = TextAreaField('due', validators=[DataRequired(message='Please enter a valid Order Due Date')])
