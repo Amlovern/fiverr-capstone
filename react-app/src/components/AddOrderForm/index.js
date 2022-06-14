@@ -47,7 +47,7 @@ export default function AddOrderForm() {
         try {
             const data = dispatch(orderActions.AddNewOrderThunk(formData));
             if (data) {
-                data.then(res => console.log(res))
+                data.then(res => history.push(`/orders/${res.id}`))
             } else {
                 setOrderErrors(data.errors);
                 return;
@@ -73,7 +73,7 @@ export default function AddOrderForm() {
                 <p className='order-gig-detail-header'>Gig Details</p>
                 <p>{currentGig?.title}</p>
                 <p>Expected Delivery Timeline: {currentGig?.deliveryTimeline} Day(s)</p>
-                <p>Order Edit / Cancellation Timeline: {currentGig?.returnTimeline !== 0 ? `${currentGig.returnTimeline} Day(s)` : 'No changes or cancellations can be made after order is placed.'}</p>
+                <p>Order Edit / Cancellation Timeline: {currentGig?.returnTimeline !== 0 ? `${currentGig?.returnTimeline} Day(s)` : 'No changes or cancellations can be made after order is placed.'}</p>
             </div>
             <form className='add-order-form' onSubmit={handleSubmit}>
                 <h1 className='add-order-header'>Add Delivery Instructions for your Order!</h1>

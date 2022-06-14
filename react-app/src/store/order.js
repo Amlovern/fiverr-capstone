@@ -32,7 +32,7 @@ const deleteOrder = (orderId) => ({
 
 // THUNK ACTION CREATORS
 export const getAllOrdersThunk = (userId) => async (dispatch) => {
-    const response = await fetch(`/api/user/${userId}`);
+    const response = await fetch(`/api/order/user/${userId}`);
 
     if (response.ok) {
         const ordersData = await response.json();
@@ -145,13 +145,8 @@ const orderReducer = (state = initialState, action) => {
     let ordersByOrderId = {};
 
     Object.keys(state.ordersByOrderId).forEach((key) => {
-        let orderArr = [];
-        if (state.ordersByOrderId[key]) {
-            state.ordersByOrderId[key].forEach((order) => {
-                orderArr.push({ ...order });
-                ordersByOrderId[key] = orderArr;
-            });
-        }
+        let order = state.ordersByOrderId[key];
+        ordersByOrderId[order.id] = { ...order }
     });
 
     const newState = {

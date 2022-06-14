@@ -1,0 +1,41 @@
+.main-order-confirmation-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 1304px;
+    padding: 32px 24px 0;
+    background-color: #FFF;
+    color: #62646a;
+    text-align: center;
+}
+
+.order-confirmation-header {
+    font-size: 28px;
+    color: #404145;
+    font-weight: 700;
+    padding: 0px 0px 16px;
+}
+
+.order-detail-section {
+    margin-bottom: 12px;
+}
+
+.order-detail-label {
+    font-size: 21px;
+    line-height: 21px;
+    margin-right: 8px;
+    margin-bottom: 3px;
+}
+
+.order-detail {
+    font-size: 18px;
+    line-height: 21px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+}
+
+.order-detail-container {
+    border: #19a463 3px solid;
+}

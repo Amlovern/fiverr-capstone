@@ -12,6 +12,7 @@ import GigDetail from './components/GigDetail';
 import AddGigForm from './components/AddGigForm';
 import UpdateGigForm from './components/UpdateGigForm';
 import AddOrderForm from './components/AddOrderForm';
+import OrderConfirmation from './components/OrderConfirmation';
 import { authenticate } from './store/session';
 
 import * as categoryActions from './store/category'
@@ -65,6 +66,9 @@ function App() {
         <Route path='/gigs/:gigId' >
           <GigDetail />
         </Route>
+        <ProtectedRoute path='/orders/:orderId' exact={true}>
+          <OrderConfirmation />
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );
