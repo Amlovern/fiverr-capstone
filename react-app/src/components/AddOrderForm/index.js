@@ -24,13 +24,13 @@ export default function AddOrderForm() {
         e.preventDefault()
         setOrderErrors([])
 
-        const formData = {
-            userId: currentUser.id,
-            gigId: gigId,
-            deliveryInstructions: deliveryInstructions,
-            placed: Date.now(),
-            due
-        }
+        // const formData = {
+        //     userId: currentUser.id,
+        //     gigId: gigId,
+        //     deliveryInstructions: deliveryInstructions,
+        //     placed: Date.now(),
+        //     due
+        // }
     }
 
     return (
