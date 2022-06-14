@@ -6,6 +6,20 @@
     padding-top: 24px;
 }
 
+.gig-detail-container {
+    color: #404145;
+    font-size: 21px;
+    text-align: center;
+    font-weight: 500;
+    border-top: #1dbf73 1px solid;
+    border-bottom: #1dbf73 1px solid;
+}
+
+.order-gig-detail-header {
+    font-weight: 700;
+    font-size: 23px;
+}
+
 .add-order-header {
     padding: 32px 0;
     text-align: center;

@@ -69,8 +69,14 @@ export default function AddOrderForm() {
 
     return (
         <div className='add-order-form-page'>
+            <div className='gig-detail-container'>
+                <p className='order-gig-detail-header'>Gig Details</p>
+                <p>{currentGig?.title}</p>
+                <p>Expected Delivery Timeline: {currentGig?.deliveryTimeline} Day(s)</p>
+                <p>Order Edit / Cancellation Timeline: {currentGig?.returnTimeline !== 0 ? `${currentGig.returnTimeline} Day(s)` : 'No changes or cancellations can be made after order is placed.'}</p>
+            </div>
             <form className='add-order-form' onSubmit={handleSubmit}>
-                <h1 className='add-order-header'>This is the Add Order Form!</h1>
+                <h1 className='add-order-header'>Add Delivery Instructions for your Order!</h1>
                 {orderErrors?.length > 0 && (
                     <div className='resource-error-container'>
                         {orderErrors?.map((error, idx) => (
