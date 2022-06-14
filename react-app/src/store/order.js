@@ -157,7 +157,7 @@ const orderReducer = (state = initialState, action) => {
         ordersByOrderId
     }
 
-    let orderId = action.payload.orderId;
+    let orderId;
 
     switch(action.type) {
         case GET_ORDERS:
@@ -166,27 +166,27 @@ const orderReducer = (state = initialState, action) => {
             return newState;
 
         case GET_ONE_ORDER:
-            // orderId = action.payload.orderId;
+            orderId = action.payload.orderId;
 
             newState.ordersByOrderId[orderId] = action.payload.orderData;
             return newState;
 
         case ADD_ORDER:
-            // orderId = action.payload.orderId;
+            orderId = action.payload.orderId;
 
             newState.ordersByOrderId[orderId] = action.payload.order
 
             return newState;
 
         case UPDATE_ORDER:
-            // orderId = action.payload.orderId;
+            orderId = action.payload.orderId;
 
             newState.ordersByOrderId[orderId] = action.payload.updatedOrder;
 
             return newState;
 
         case DELETE_ORDER:
-            // orderId = action.payload.orderId;
+            orderId = action.payload.orderId;
 
             delete newState.ordersByOrderId[orderId];
 

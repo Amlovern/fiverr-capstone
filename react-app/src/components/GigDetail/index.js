@@ -62,13 +62,17 @@ export default function GigDetail() {
         history.push(`/gigs/${gigId}/update`)
     }
 
+    const handleNewOrder = (e) => {
+        e.preventDefault();
+        history.push(`/gigs/${gigId}/new-order`)
+    }
+
     if (!gigs) {
         return null
     }
 
     return (
         <div className='main-gig-detail-container'>
-            {/* <h1>This is the Gig Detail Page for Gig # {gigId}!</h1> */}
             <div className='main'>
                 <div className='gig-header-container'>
                     <div className='gig-category'>Category: {categories[currentGig?.categoryId]?.name}</div>
@@ -162,6 +166,19 @@ export default function GigDetail() {
                                         </button>
                                     </div>
                                 )}
+                            </>
+                        )}
+                        {sessionUser?.id !== gigOwner?.id && (
+                            <>
+                                <div>
+                                    <button
+                                        className='gig-order-btn'
+                                        type='button'
+                                        onClick={handleNewOrder}
+                                        >
+                                        Place an Order for This Gig?
+                                    </button>
+                                </div>
                             </>
                         )}
                     </aside>
