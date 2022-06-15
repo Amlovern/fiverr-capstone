@@ -39,3 +39,60 @@
 .order-detail-container {
     border: #19a463 3px solid;
 }
+
+.order-cancel-btn, .cancel-cancel-btn, .order-update-btn {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    padding: 12px 24px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 100%;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: 70ms cubic-bezier(.75,0,.25,1);
+    background-color: #1dbf73;
+    color: #fff;
+    margin-top: 16px;
+}
+
+.order-cancel-btn:hover, .cancel-cancel-btn:hover, .order-update-btn:hover {
+    background: #19a463;
+}
+
+.cancel-order-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.cancel-confirm-btn {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    padding: 12px 24px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 100%;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: 70ms cubic-bezier(.75,0,.25,1);
+    background-color: #bf1d1d;
+    color: #fff;
+    margin-top: 16px;
+}
+
+.cancel-confirm-btn:hover {
+    background: #a41919;
+}

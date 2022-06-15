@@ -1,8 +1,8 @@
 import './OrderConfirmation.css';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
 import * as gigActions from '../../store/gig';
 import * as orderActions from '../../store/order';
@@ -10,10 +10,13 @@ import * as orderActions from '../../store/order';
 export default function OrderConfirmation() {
     const params = useParams();
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const gigs = useSelector((state) => state.gig);
     const sessionUser = useSelector((state) => state.session.user);
     const orders = useSelector((state) => state.order.ordersByOrderId);
+
+    const [showDelete, setShowDelete] = useState(false);
 
     const orderId = params.orderId;
     const currentOrder = orders[orderId];
@@ -34,6 +37,26 @@ export default function OrderConfirmation() {
     const placedDate = new Date(currentOrder?.placed).toDateString();
     const cancelDate = addDays(currentOrder?.placed, currentGig?.returnTimeline).toDateString()
 
+    const handleDelete = (e) => {
+        e.preventDefault();
+
+        const errors = dispatch(orderActions.deleteOneOrderThunk(currentOrder?.id));
+        if (errors) {
+            errors.then(res => history.push('/'))
+        } else {
+            console.log(errors)
+        }
+    };
+
+    const displayDelete = (e) => {
+        e.preventDefault();
+        if (showDelete === true) {
+            setShowDelete(false)
+        } else {
+            setShowDelete(true)
+        }
+    };
+
     if (!gigs || !currentOrder) {
         return null
     };
@@ -46,6 +69,7 @@ export default function OrderConfirmation() {
                 <div className='gig-image-container'>
                     <img className='gig-image' src={currentGig?.image} alt='Gig' />
                 </div>
+
                 <div className='order-detail-container'>
                     <div className='order-detail-section'>
                         <div className='order-detail-label'>Order Placed On:</div>
@@ -63,6 +87,53 @@ export default function OrderConfirmation() {
                         <div className='order-detail-label'>Delivery Instructions:</div>
                         <span className='order-detail'>{currentOrder.deliveryInstructions}</span>
                     </div>
+                </div>
+
+                <div className='order-confirmation-btns-container'>
+                    {sessionUser?.id === currentOrder?.userId && (
+                        <>
+                            <div>
+                                <button
+                                    className='order-update-btn'
+                                    type='button'
+                                    onClick={'Do Nothing'}
+                                >
+                                    Update This Order
+                                </button>
+                            </div>
+
+                            {!showDelete && (
+                                <div>
+                                    <button
+                                        className='order-cancel-btn'
+                                        type='button'
+                                        onClick={displayDelete}
+                                    >
+                                        Cancel This Order
+                                    </button>
+                                </div>
+                            )}
+                            {showDelete && (
+                                <div className='cancel-order-container'>
+                                    <span className='cancel-warning'>Are you sure you want to cancel this order?</span>
+                                    <button
+                                        className='cancel-cancel-btn'
+                                        type='button'
+                                        onClick={displayDelete}
+                                    >
+                                        Do Not Cancel
+                                    </button>
+                                    <button
+                                        className='cancel-confirm-btn'
+                                        type='button'
+                                        onClick={handleDelete}
+                                    >
+                                        Cancel Order
+                                    </button>
+                                </div>
+                            )}
+                        </>
+                    )}
                 </div>
             </div>
         </div>

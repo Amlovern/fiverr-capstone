@@ -1,31 +1,36 @@
 import './OrdersPage.css';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
-import * as sessionActions from '../../store/session';
 import * as orderActions from '../../store/order';
+import * as gigActions from '../../store/gig';
 
 export default function OrdersPage() {
     const dispatch = useDispatch();
-    const params = useParams();
+    const history = useHistory()
 
     const sessionUser = useSelector((state) => state.session.user);
-    const orders = useSelector((state) => state.order.ordersByOrderId);
+    const ordersState = useSelector((state) => state.order.ordersByOrderId);
+    const gigsByGigId = useSelector((state) => state.gig.gigsByGigId);
+
+    const [orders, setOrders] = useState([]);
 
     useEffect(() => {
         dispatch(orderActions.getAllOrdersThunk(sessionUser?.id));
+        dispatch(gigActions.getAllGigsThunk());
     }, [dispatch])
 
-    let ordersArr = [];
     useEffect(() => {
-        if (orders) {
-            Object.keys(orders).forEach((key) => {
-                ordersArr.push(orders[key]);
+        let ordersArr = [];
+        if (ordersState) {
+            Object.keys(ordersState).forEach((key) => {
+                ordersArr.push(ordersState[key]);
             })
+            setOrders(ordersArr);
         }
-    }, [orders])
+    }, [ordersState])
 
     if (!sessionUser) {
         return null
@@ -33,11 +38,45 @@ export default function OrdersPage() {
 
     return (
         <div className='user-orders-container'>
-            <div className='main'>
+            <div>
                 <div className='user-orders-header'>
                     <h2>{sessionUser.username}'s Orders</h2>
                 </div>
+                <div className='orders-container'>
+                    {orders?.map((order, idx) => (
+                        <div className='order-details-container' key={idx}>
+                            <div className='overlay' onClick={() => history.push(`/orders/${order?.id}`)}>
+                                <div className='items'></div>
+                                <div className='items head'>
+                                    <p className='order-detail-label'>Gig Title:</p>
+                                    <p className='order-detail'>{gigsByGigId[order?.gigId]?.title}</p>
+                                    <hr></hr>
+                                </div>
+                                <div className='items details'>
+                                    <p className='order-detail-label'>Order Placed On:</p>
+                                    <span className='order-detail'>{new Date(order?.placed).toDateString()}</span>
+                                    <p className='order-detail-label'>Order Due By:</p>
+                                    <span className='order-detail'>{new Date(order?.due).toDateString()}</span>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
+
+        // <div class="order-details-container">
+        //     <div class="overlay">
+        //         <div class = "items"></div>
+        //         <div class = "items head">
+        //             <p>Flower Embroidery Hoop Art</p>
+        //             <hr></hr>
+        //         </div>
+        //         <div class = "items price">
+        //             <p class="old">$699</p>
+        //             <p class="new">$345</p>
+        //         </div>
+        //     </div>
+        // </div>
     )
 }
