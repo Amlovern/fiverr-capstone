@@ -13,6 +13,7 @@ import AddGigForm from './components/AddGigForm';
 import UpdateGigForm from './components/UpdateGigForm';
 import AddOrderForm from './components/AddOrderForm';
 import OrderConfirmation from './components/OrderConfirmation';
+import OrdersPage from './components/OrdersPage';
 import { authenticate } from './store/session';
 
 import * as categoryActions from './store/category'
@@ -49,7 +50,7 @@ function App() {
           <UsersList/>
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
+          <OrdersPage />
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <SplashPage />

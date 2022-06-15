@@ -29,7 +29,9 @@ const NavBar = () => {
           </NavLink>
         </li>
         <li className='navbar-link orders-link'>
-          Orders
+          <NavLink to={`/users/${currentUser.id}`} exact={true} className='navbar-new-gig-link'>
+            My Orders
+          </NavLink>
         </li>
         <li className='navbar-link navbar-profile'>
           <div className='profile-link' onClick={toggleProfileDisplay}>
