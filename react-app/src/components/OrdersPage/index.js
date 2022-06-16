@@ -38,7 +38,7 @@ export default function OrdersPage() {
 
     return (
         <div className='user-orders-container'>
-            <div>
+            <div className='user-orders-outer-container'>
                 <div className='user-orders-header'>
                     <h2>{sessionUser.username}'s Orders</h2>
                 </div>

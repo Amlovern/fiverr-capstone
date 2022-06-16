@@ -14,20 +14,23 @@
     font-size: 32px;
 }
 
+.user-orders-outer-container {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 .orders-container {
     display: flex;
-    width: 80%;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 .order-details-container {
     width: 300px;
     height: 400px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    margin: auto;
+    margin: 15px;
     background: linear-gradient(0.25turn, #19a463, #FEF5DF, #1dbf73);
     background-color: black;
     background-size: cover;
