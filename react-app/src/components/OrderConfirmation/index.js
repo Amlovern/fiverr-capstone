@@ -57,6 +57,11 @@ export default function OrderConfirmation() {
         }
     };
 
+    const handleUpdate = (e) => {
+        e.preventDefault();
+        history.push(`/orders/${orderId}/update`);
+    }
+
     if (!gigs || !currentOrder) {
         return null
     };
@@ -96,7 +101,7 @@ export default function OrderConfirmation() {
                                 <button
                                     className='order-update-btn'
                                     type='button'
-                                    onClick={'Do Nothing'}
+                                    onClick={handleUpdate}
                                 >
                                     Update This Order
                                 </button>

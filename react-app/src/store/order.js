@@ -83,7 +83,7 @@ export const AddNewOrderThunk = (formData) => async (dispatch) => {
 export const updateOneOrderThunk = (order, formData) => async (dispatch) => {
     const response = await fetch(`/api/order/${order.id}`, {
         method: 'PATCH',
-        header: {
+        headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
@@ -93,7 +93,8 @@ export const updateOneOrderThunk = (order, formData) => async (dispatch) => {
             placed: formData.placed,
             due: formData.due
         })
-    });
+    })
+
 
     if (response.ok) {
         const updatedOrder = await response.json();

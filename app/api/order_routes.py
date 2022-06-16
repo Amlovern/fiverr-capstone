@@ -36,6 +36,7 @@ def create_new_order():
 
     form=OrderForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    print('FORM DATA IN ROUTE --------------------------', form.data)
 
     if form.validate_on_submit():
         params = dict(
@@ -61,7 +62,7 @@ def create_new_order():
 @login_required
 def update_order(id):
 
-    form=OrderForm()
+    form = OrderForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
