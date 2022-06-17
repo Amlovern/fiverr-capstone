@@ -87,6 +87,7 @@ export default function AddGigForm() {
 
                 <div className='input-wrapper'>
                     <label className='label-for-input-field'>Title</label>
+                    <span className='label-required'>* Required</span>
                     <input
                         className='input-field'
                         type='text'
@@ -98,6 +99,7 @@ export default function AddGigForm() {
                 </div>
                 <div className='input-wrapper'>
                     <label className='label-for-input-field'>Category</label>
+                    <span className='label-required'>* Required</span>
                     <select 
                     className='input-field'
                     onChange={(e) => setCategory(e.target.value)}
@@ -133,6 +135,7 @@ export default function AddGigForm() {
                 </div>
                 <div className='input-wrapper'>
                     <label className='label-for-input-field'>Price</label>
+                    <span className='label-required'>* Required</span>
                     <input 
                         className='input-field'
                         type='number'
@@ -144,6 +147,7 @@ export default function AddGigForm() {
                 </div>
                 <div className='input-wrapper'>
                     <label className='label-for-input-field'>Delivery Timeline</label>
+                    <span className='label-required'>* Required</span>
                     <input 
                         className='input-field'
                         type='number'
@@ -155,6 +159,7 @@ export default function AddGigForm() {
                 </div>
                 <div className='input-wrapper'>
                     <label className='label-for-input-field'>Cancellation Timeline</label>
+                    <span className='label-required'>* Required</span>
                     <input 
                         className='input-field'
                         type='number'

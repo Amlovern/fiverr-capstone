@@ -27,6 +27,20 @@
     position: relative;
 }
 
+.label-for-input-field {
+    color: #74767e;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.label-required {
+    color: #bf1d1d;
+    font-size: 12px;
+    font-weight: 400;
+    margin: 3px;
+    margin-left: 0;
+}
+
 .input-field {
     font-size: 16px;
     line-height: 24px;

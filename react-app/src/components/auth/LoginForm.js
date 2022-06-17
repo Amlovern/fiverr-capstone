@@ -60,10 +60,12 @@ const LoginForm = () => {
     <div className='login-page'>
       <form onSubmit={onLogin} autoComplete='off' className='login-form'>
         <section className='form-header'>Sign In to Nerdrr</section>
-        <div>
-          {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-            ))}
+        <div className='resource-error-container'>
+          {errors.map((error, idx) => (
+            <p className='resource-error-message' key={idx}>
+              {error?.split(': ')[1]}
+            </p>  
+          ))}
         </div>
         <div className='input-wrapper'>
           <label htmlFor='credential'>Email / Username</label>
