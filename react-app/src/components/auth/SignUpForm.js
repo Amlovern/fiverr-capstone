@@ -15,12 +15,12 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password === confirmPassword) {
-      const data = await dispatch(sessionActions.signUp(username, email, password));
+    // if (password === confirmPassword) {
+      const data = await dispatch(sessionActions.signUp(username, email, password, confirmPassword));
       if (data) {
         setErrors(data)
       }
-    }
+    // }
   };
 
   const updateUsername = (e) => {
@@ -68,13 +68,16 @@ const SignUpForm = () => {
     <div className='sign-up-page'>
       <form onSubmit={onSignUp} className='sign-up-form'>
       <section className='form-header'>Join Nerdrr</section>
-        <div>
-          {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
+        <div className='resource-error-container'>
+          {errors.map((error, idx) => (
+            <p className='resource-error-message' key={idx}>
+              {error?.split(': ')[1]}
+            </p>
             ))}
         </div>
         <div className='input-wrapper'>
           <label>Username</label>
+          <span className='label-required'>* Required</span>
           <input
             className='sign-up-input'
             type='text'
@@ -86,9 +89,10 @@ const SignUpForm = () => {
         </div>
         <div className='input-wrapper'>
           <label>Email</label>
+          <span className='label-required'>* Required</span>
           <input
             className='sign-up-input'
-            type='text'
+            type='email'
             name='email'
             placeholder='Email'
             onChange={updateEmail}
@@ -97,6 +101,7 @@ const SignUpForm = () => {
         </div>
         <div className='input-wrapper'>
           <label>Password</label>
+          <span className='label-required'>* Required</span>
           <input
             className='sign-up-input'
             type='password'
@@ -108,6 +113,7 @@ const SignUpForm = () => {
         </div>
         <div className='input-wrapper'>
           <label>Confirm Password</label>
+          <span className='label-required'>* Required</span>
           <input
             className='sign-up-input'
             type='password'
@@ -115,7 +121,7 @@ const SignUpForm = () => {
             placeholder='Confirm Password'
             onChange={updateConfirmPassword}
             value={confirmPassword}
-            required={true}
+            // required={true}
             ></input>
         </div>
         <div className='sign-up-btn-container'>

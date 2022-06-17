@@ -69,6 +69,7 @@ const LoginForm = () => {
         </div>
         <div className='input-wrapper'>
           <label htmlFor='credential'>Email / Username</label>
+          <span className='label-required'>* Required</span>
           <input
             className='login-input'
             name='credential'
@@ -80,6 +81,7 @@ const LoginForm = () => {
         </div>
         <div className='input-wrapper'>
           <label htmlFor='password'>Password</label>
+          <span className='label-required'>* Required</span>
           <input
             className='login-input'
             name='password'
