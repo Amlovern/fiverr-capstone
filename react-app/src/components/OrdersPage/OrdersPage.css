@@ -14,6 +14,11 @@
     font-size: 32px;
 }
 
+.user-orders-subheader {
+  text-align: center;
+  font-size: 24px;
+}
+
 .user-orders-outer-container {
     justify-content: center;
     align-items: center;

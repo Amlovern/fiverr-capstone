@@ -42,6 +42,9 @@ export default function OrdersPage() {
                 <div className='user-orders-header'>
                     <h2>{sessionUser.username}'s Orders</h2>
                 </div>
+                <div className='user-orders-subheader'>
+                    <h3>Hover Over a Card to View Order Details</h3>
+                </div>
                 <div className='orders-container'>
                     {orders?.map((order, idx) => (
                         <div className='order-details-container' key={idx}>
