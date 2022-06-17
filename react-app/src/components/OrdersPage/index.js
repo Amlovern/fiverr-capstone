@@ -64,19 +64,5 @@ export default function OrdersPage() {
                 </div>
             </div>
         </div>
-
-        // <div class="order-details-container">
-        //     <div class="overlay">
-        //         <div class = "items"></div>
-        //         <div class = "items head">
-        //             <p>Flower Embroidery Hoop Art</p>
-        //             <hr></hr>
-        //         </div>
-        //         <div class = "items price">
-        //             <p class="old">$699</p>
-        //             <p class="new">$345</p>
-        //         </div>
-        //     </div>
-        // </div>
     )
 }

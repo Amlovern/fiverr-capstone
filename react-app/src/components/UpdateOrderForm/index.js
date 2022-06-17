@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 
 import * as orderActions from '../../store/order';
-import * as gigActions from '../../store/gig';
 
 export default function UpdateOrderForm() {
     const dispatch = useDispatch();
@@ -85,7 +84,6 @@ export default function UpdateOrderForm() {
                         value={deliveryInstructions}
                         placeholder='Delivery Instructions'
                         rows={5}
-                        required
                     />
                 </div>
 

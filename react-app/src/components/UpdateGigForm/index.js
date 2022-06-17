@@ -19,7 +19,7 @@ export default function UpdateGigForm() {
 
     const [title, setTitle] = useState(currentGig?.title);
     const [category, setCategory] = useState(currentGig?.categoryId);
-    const [imageUrl, setImageUrl] = useState(currentGig?.image);
+    // const [imageUrl, setImageUrl] = useState(currentGig?.image);
     const [description, setDescription] = useState(currentGig?.description);
     const [price, setPrice] = useState(currentGig?.price);
     const [deliveryTimeline, setDeliveryTimeline] = useState(currentGig?.deliveryTimeline);
@@ -43,7 +43,7 @@ export default function UpdateGigForm() {
             ownerId: currentUser.id,
             category: parseInt(category),
             title: title,
-            image: imageUrl,
+            // image: imageUrl,
             description: description,
             price: parseInt(price),
             deliveryTimeline: parseInt(deliveryTimeline),
@@ -111,7 +111,7 @@ export default function UpdateGigForm() {
                         ))}
                     </select>
                 </div>
-                <div className='input-wrapper'>
+                {/* <div className='input-wrapper'>
                     <label className='label-for-input-field'>Image URL</label>
                     <input
                         className='input-field'
@@ -121,7 +121,7 @@ export default function UpdateGigForm() {
                         placeholder='Image URL'
                         required
                     />
-                </div>
+                </div> */}
                 <div className='input-wrapper'>
                     <label className='label-for-input-field'>Description</label>
                     <textarea 

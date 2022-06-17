@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 
+import githubLogo from '../../images/github.svg';
+
 const NavBar = () => {
   const currentUser = useSelector((state) => state.session.user);
   const initial = currentUser?.username[0].toUpperCase()
@@ -70,6 +72,15 @@ const NavBar = () => {
             <span className='header-logo'>nerdrr</span>
             <span className='header-logo-end'>.</span>
           </NavLink>
+        </li>
+        <li className='navbar-link'>
+          <a
+            href='https://github.com/Amlovern'
+            target='_blank'
+            rel='noreferrer'
+          >
+            <img src={githubLogo} height='20px' alt='github' />
+          </a>
         </li>
         <div className='session-link-wrapper'>
           {sessionLinks}

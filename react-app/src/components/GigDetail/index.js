@@ -82,9 +82,9 @@ export default function GigDetail() {
                         <div className='gig-header-queue'>{currentGig?.queue} Orders in queue</div>
                     </div>
                 </div>
-                <div className='gig-image-container'>
+                {/* <div className='gig-image-container'>
                     <img className='gig-image' src={currentGig?.image} alt='gig'></img>
-                </div>
+                </div> */}
                 <div className='gig-description-container'>
                     <header>
                         <h2 className='gig-description-header'>

@@ -63,7 +63,7 @@ export const addNewGigThunk = (formData) => async (dispatch) => {
             ownerId: formData.ownerId,
             categoryId: formData.categoryId,
             title: formData.title,
-            imageUrl: formData.image,
+            // imageUrl: formData.image,
             queue: formData.queue,
             description: formData.description,
             price: formData.price,
@@ -98,7 +98,7 @@ export const updateOneGigThunk = (gig, formData) => async (dispatch) => {
             ownerId: formData.ownerId,
             categoryId: formData.category,
             title: formData.title,
-            imageUrl: formData.image,
+            // imageUrl: formData.image,
             queue: formData.queue,
             description: formData.description,
             price: formData.price,
@@ -229,7 +229,12 @@ const gigReducer = (state = initialState, action) => {
             } else {
                 newState.gigsByOwnerId[ownerId] = [action.payload.gig]
             }
-            newState.gigsByCategoryId[categoryId].push(action.payload.gig);
+
+            if (newState.gigsByCategoryId[categoryId]) {
+                newState.gigsByCategoryId[categoryId].push(action.payload.gig);
+            } else {
+                newState.gigsByCategoryId[categoryId] = [action.payload.gig]
+            }
             newState.gigsByGigId[gigId] = action.payload.gig
 
             return newState

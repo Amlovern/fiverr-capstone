@@ -96,7 +96,6 @@ export default function AddOrderForm() {
                         value={deliveryInstructions}
                         placeholder='Delivery Instructions'
                         rows={5}
-                        required
                     />
                 </div>
 
