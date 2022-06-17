@@ -79,7 +79,7 @@ export default function GigDetail() {
                     <div className='gig-title'>{currentGig?.title}</div>
                     <div className='gig-header-subdetails'>
                         <div className='gig-header-owner'>{gigOwner?.username}</div>
-                        <div className='gig-header-queue'>{currentGig?.queue} Orders in queue</div>
+                        {/* <div className='gig-header-queue'>{currentGig?.queue} Orders in queue</div> */}
                     </div>
                 </div>
                 {/* <div className='gig-image-container'>

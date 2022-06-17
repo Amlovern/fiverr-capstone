@@ -77,6 +77,10 @@ export default function OrderConfirmation() {
 
                 <div className='order-detail-container'>
                     <div className='order-detail-section'>
+                        <div className='order-detail-label'>Gig Title:</div>
+                        <span className='order-detail'>{currentGig?.title}</span>
+                    </div>
+                    <div className='order-detail-section'>
                         <div className='order-detail-label'>Order Placed On:</div>
                         <span className='order-detail'>{placedDate}</span>
                     </div>

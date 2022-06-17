@@ -33,7 +33,7 @@ const SplashPage = () => {
                                 {/* <img className='gig-img' src={gig.image} alt='gig cover'/> */}
                                 <div className='gig-title-header'>{gig.title}</div>
                                 <div className='gig-delivery-title'>Average Delivery Timeline: {gig.deliveryTimeline} Days</div>
-                                <div className='gig-price-container'>
+                                <div className='splash-gig-price-container'>
                                     <span className='gig-price-title'>Starting at</span>
                                     <span className='gig-price'>${gig.price}</span>
                                 </div>
