@@ -59,7 +59,7 @@ export const login = ({ credential, password }) => async (dispatch) => {
       return data.errors;
     }
   } else {
-    return ['An error occurred. Please try again.']
+    return ['error: Wrong email/username or password, please try again.']
   }
 
 }

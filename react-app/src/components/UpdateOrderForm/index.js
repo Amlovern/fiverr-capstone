@@ -75,6 +75,15 @@ export default function UpdateOrderForm() {
             </div>
 
             <form className='update-order-form' onSubmit={handleSubmit}>
+                {updateErrors?.length > 0 && (
+                    <div className='resource-error-container'>
+                        {updateErrors?.map((error, idx) => (
+                            <p className='resource-error-message' key={idx}>
+                                {error?.split(': ')[1]}
+                            </p>
+                        ))}
+                    </div>
+                )}
                 <div className='input-wrapper'>
                     <label className='label-for-input-field'>Delivery Instructions</label>
                     <textarea 
