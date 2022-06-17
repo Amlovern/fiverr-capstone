@@ -15,12 +15,10 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    // if (password === confirmPassword) {
       const data = await dispatch(sessionActions.signUp(username, email, password, confirmPassword));
       if (data) {
         setErrors(data)
       }
-    // }
   };
 
   const updateUsername = (e) => {
