@@ -1,7 +1,10 @@
 # Nerdrr
 
 Inspired by Fiverr, Nerdrr is an online community where users can list services that they can provide, called "gigs", that other users can order. This site is based around "nerdy" topics such as Card Games, Tabletop Games, Video Games, and Anime.
+
 Check out a live version of Nerdrr here: [https://nerdrr.herokuapp.com/](https://nerdrr.heorkuapp.com)
+
+![Splash Page](https://user-images.githubusercontent.com/97067452/174206331-1b0b6970-a025-4029-a117-0c4773d74637.png)
 
 ## Technologies Used
  - Python3
@@ -95,8 +98,6 @@ Check out a live version of Nerdrr here: [https://nerdrr.herokuapp.com/](https:/
 
 ## Snapshots
 
-### Splash Page
-![Splash Page](https://user-images.githubusercontent.com/97067452/174206331-1b0b6970-a025-4029-a117-0c4773d74637.png)
 
 ### Sign-Up Page
 ![Sign-Up](https://user-images.githubusercontent.com/97067452/174206432-d890d906-0966-44be-8d56-fe8f34c0ccec.png)
