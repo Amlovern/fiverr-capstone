@@ -47,10 +47,14 @@ export default function AddOrderForm() {
         try {
             const data = dispatch(orderActions.AddNewOrderThunk(formData));
             if (data) {
-                data.then(res => history.push(`/orders/${res.id}`))
-            } else {
-                setOrderErrors(data.errors);
-                return;
+                data.then((res) => {
+                    if (res.id) {
+                        data.then(res => history.push(`/orders/${res.id}`))
+                    } else {
+                        setOrderErrors(res);
+                        return;
+                    }
+                })
             }
         } catch (errorResponse) {
             setOrderErrors(['Something went wrong, please try again.']);

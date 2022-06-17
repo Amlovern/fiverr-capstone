@@ -94,7 +94,7 @@ export default function OrderConfirmation() {
                     </div>
                     <div className='order-detail-section'>
                         <div className='order-detail-label'>Delivery Instructions:</div>
-                        <span className='order-detail'>{currentOrder.deliveryInstructions}</span>
+                        <span className='order-detail'>{currentOrder.deliveryInstructions !== '' ? currentOrder.deliveryInstructions : 'No delivery instructions specified'}</span>
                     </div>
                 </div>
 

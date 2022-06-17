@@ -44,11 +44,14 @@ export default function UpdateOrderForm() {
         try {
             const data = dispatch(orderActions.updateOneOrderThunk(currentOrder, formData));
             if (data) {
-                data.then(res => history.push(`/orders/${res.id}`));
-            } else {
-                console.log('ERRORS', data.errors)
-                setUpdateErrors(data.errors);
-                return;
+                data.then((res) => {
+                    if (res.id) {
+                        data.then(res => history.push(`/orders/${res.id}`));
+                    } else {
+                        setUpdateErrors(res);
+                        return;
+                    }
+                })
             }
         } catch (errorResponse) {
             setUpdateErrors(['Something went wrong, please try again.']);

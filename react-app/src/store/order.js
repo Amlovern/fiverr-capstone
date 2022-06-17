@@ -76,7 +76,7 @@ export const AddNewOrderThunk = (formData) => async (dispatch) => {
             return resBody.errors
         }
     } else {
-        return ['An error occured. Please try again.']
+        return ['error: An error occured. Please try again.']
     }
 };
 
