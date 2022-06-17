@@ -18,6 +18,5 @@ class GigForm(FlaskForm):
     ])
     price = IntegerField('price', validators=[DataRequired(message='Please enter a valid Price.')])
     deliveryTimeline = IntegerField('deliveryTimeline', validators=[DataRequired(message='Please enter a valid Delivery Timeline in days.')])
-    returnTimeline = IntegerField('returnTimeline', validators=[DataRequired(message='Please enter a valid Cancellation Timeline in days. This can be 0.'),
-        NumberRange(min=0, max=100, message='Please select a cancellation timeline between 0 and 100 days.')
+    returnTimeline = IntegerField('returnTimeline', validators=[NumberRange(min=0, max=100, message='Please select a cancellation timeline between 0 and 100 days.')
     ])

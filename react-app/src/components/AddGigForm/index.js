@@ -17,9 +17,9 @@ export default function AddGigForm() {
     const [category, setCategory] = useState(1);
     // const [imageUrl, setImageUrl] = useState('');
     const [description, setDescription] = useState('');
-    const [price, setPrice] = useState('');
-    const [deliveryTimeline, setDeliveryTimeline] = useState('');
-    const [returnTimeline, setReturnTimeline] = useState('');
+    const [price, setPrice] = useState('null');
+    const [deliveryTimeline, setDeliveryTimeline] = useState('null');
+    const [returnTimeline, setReturnTimeline] = useState('null');
     const [addErrors, setAddErrors] = useState([])
 
     const categoriesList = []
@@ -51,10 +51,15 @@ export default function AddGigForm() {
         try {
             const data = dispatch(gigActions.addNewGigThunk(formData));
             if (data) {
-                data.then(res => history.push(`/gigs/${res.id}`))
-            } else {
-                setAddErrors(data.errors);
-                return;
+                data.then((res) => {
+                    console.log(res)
+                    if (res.id) {
+                        data.then(res => history.push(`/gigs/${res.id}`))
+                    } else {
+                        setAddErrors(res);
+                        return;
+                    }
+                })
             }
         } catch (errorResponse) {
             setAddErrors(['Something went wrong, please try again.']);
@@ -140,7 +145,7 @@ export default function AddGigForm() {
                         className='input-field'
                         type='number'
                         onChange={(e) => setPrice(e.target.value)}
-                        value={price}
+                        value={price !== 'null' ? price : ''}
                         placeholder='Price'
                         required
                     />
@@ -152,7 +157,7 @@ export default function AddGigForm() {
                         className='input-field'
                         type='number'
                         onChange={(e) => setDeliveryTimeline(e.target.value)}
-                        value={deliveryTimeline}
+                        value={deliveryTimeline !== 'null' ? deliveryTimeline : ''}
                         placeholder='Expected delivery timeline? (In days)'
                         required
                     />
@@ -164,7 +169,7 @@ export default function AddGigForm() {
                         className='input-field'
                         type='number'
                         onChange={(e) => setReturnTimeline(e.target.value)}
-                        value={returnTimeline}
+                        value={returnTimeline !== 'null' ? returnTimeline : ''}
                         placeholder='Order cancellation timeline? (In days)'
                         required
                     />

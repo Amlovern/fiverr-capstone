@@ -53,10 +53,14 @@ export default function UpdateGigForm() {
         try {
             const data = dispatch(gigActions.updateOneGigThunk(currentGig, formData));
             if (data) {
-                data.then(res => history.push(`/gigs/${res.id}`))
-            } else {
-                setUpdateErrors(data.errors)
-                return;
+                data.then((res) => {
+                    if (res.id) {
+                        data.then(res => history.push(`/gigs/${res.id}`))
+                    } else {
+                        setUpdateErrors(data.errors)
+                        return;
+                    }
+                })
             }
         } catch (errorResponse) {
             setUpdateErrors(['Something went wrong, please try again.'])
