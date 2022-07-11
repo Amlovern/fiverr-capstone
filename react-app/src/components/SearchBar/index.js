@@ -1,6 +1,7 @@
 import './SearchBar.css';
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import * as gigActions from '../../store/gig';
 
@@ -8,16 +9,16 @@ import magnifyingGlass from '../../images/magnifying-glass.svg';
 
 export default function SearchBar() {
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const gigs = useSelector((state) => state.gig.gigsByGigId);
-
-    console.log(gigs)
 
     const [query, setQuery] = useState('');
 
     const handleSearch = (e) => {
         e.preventDefault();
-        dispatch(gigActions.searchGigThunk(query))
+        history.push(`/search/${query}`);
+        // dispatch(gigActions.searchGigThunk(query))
     }
 
     useEffect(() => {

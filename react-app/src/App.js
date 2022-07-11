@@ -16,6 +16,7 @@ import OrderConfirmation from './components/OrderConfirmation';
 import OrdersPage from './components/OrdersPage';
 import UpdateOrderForm from './components/UpdateOrderForm';
 import AboutPage from './components/AboutPage';
+import SearchResultsPage from './components/SearchResultsPage';
 
 import { authenticate } from './store/session';
 
@@ -79,6 +80,9 @@ function App() {
         <ProtectedRoute path='/orders/:orderId/update' exact={true}>
           <UpdateOrderForm />
         </ProtectedRoute>
+        <Route path='/search/:query' >
+          <SearchResultsPage />
+        </Route>
       </Switch>
     </BrowserRouter>
   );
