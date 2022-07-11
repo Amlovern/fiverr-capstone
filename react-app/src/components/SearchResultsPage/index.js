@@ -10,9 +10,39 @@ export default function SearchResultsPage() {
     const dispatch = useDispatch();
     const params = useParams();
 
-    console.log('PARAMS', params.query)
+    const gigs = useSelector((state) => state.gig.gigsByGigId);
+    console.log('GIGS IN SEARCH RESULTS', gigs)
+
+    const query = params.query;
+
+    useEffect(() => {
+        dispatch(gigActions.searchGigThunk(query))
+    }, [dispatch, query])
+
+    if (!gigs) {
+        return null;
+    };
+
+    if (!gigs || gigs.length === 0) {
+        return (
+            <div>Sorry, no gigs could be found from your search.</div>
+        );
+    };
 
     return (
-        <div>Search Results</div>
+        <div>
+            <div>
+                {gigs.length === 0 && (
+                    <div>Sorry, no gigs could be found from your search.</div>
+                )}
+            </div>
+            <div>
+                {gigs?.map((gig, idx) => (
+                    <div key={idx}>
+                        <p>{gig.title}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
     )
 }

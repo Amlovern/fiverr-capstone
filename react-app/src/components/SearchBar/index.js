@@ -17,6 +17,7 @@ export default function SearchBar() {
 
     const handleSearch = (e) => {
         e.preventDefault();
+        console.log('SEARCH CLICKED', query)
         history.push(`/search/${query}`);
         // dispatch(gigActions.searchGigThunk(query))
     }
