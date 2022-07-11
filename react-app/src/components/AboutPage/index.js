@@ -1,5 +1,6 @@
 import './AboutPage.css';
 import githubLogo from '../../images/github.svg';
+import linkedInLogo from '../../images/linkedin.svg';
 import profileImage from '../../images/profile-image.png';
 
 import React from 'react';
@@ -31,6 +32,13 @@ export default function AboutPage() {
                     rel='noreferrer'
                 >
                     <img src={githubLogo} height='80px' alt='github' />
+                </a>
+                <a
+                    href='https://www.linkedin.com/in/anthonylovern/'
+                    target='_blank'
+                    rel='noreferrer'
+                >
+                    <img src={linkedInLogo} height='80px' alt='linkedIn' />
                 </a>
             </div>
         </div>

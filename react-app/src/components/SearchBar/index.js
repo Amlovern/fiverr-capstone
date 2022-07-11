@@ -11,11 +11,13 @@ export default function SearchBar() {
 
     const gigs = useSelector((state) => state.gig.gigsByGigId);
 
+    console.log(gigs)
+
     const [query, setQuery] = useState('');
 
     const handleSearch = (e) => {
         e.preventDefault();
-
+        dispatch(gigActions.searchGigThunk(query))
     }
 
     useEffect(() => {

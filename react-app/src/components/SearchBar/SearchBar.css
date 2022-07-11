@@ -25,6 +25,7 @@
 .search-btn {
     display: block;
     padding: 8px 16px;
+    margin-right: 10px;
     background-color: #222325;
     border-radius: 0 4px 4px 0;
     color: #fff;

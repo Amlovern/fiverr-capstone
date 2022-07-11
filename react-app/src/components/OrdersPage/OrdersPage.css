@@ -97,7 +97,7 @@
 }
 
 .order-details-container:hover .overlay hr {
-    width: 75px;
+    width: 86%;
     transition-delay: 0.4s;
 }
 
