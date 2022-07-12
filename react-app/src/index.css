@@ -4,10 +4,11 @@
 }
 
 a {
+    color: #404145;
     text-decoration: none;
     transition: color .2s;
 }
 
-a, a:hover {
+a:hover {
     color: #1dbf73;
 }
