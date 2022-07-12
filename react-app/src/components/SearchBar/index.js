@@ -32,7 +32,7 @@ export default function SearchBar() {
 
     return (
         <div className='header-search'>
-            <form className='search-form'>
+            <form className='search-form' onSubmit={handleSearch}>
                 <input 
                     type='search'
                     autoComplete='off'
@@ -49,13 +49,6 @@ export default function SearchBar() {
                     />
                 </button>
             </form>
-            {/* <ul className='search-bar-panel'>
-                <aside>
-                    <ul>
-
-                    </ul>
-                </aside>
-            </ul> */}
         </div>
     )
 }

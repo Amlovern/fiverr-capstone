@@ -1,0 +1,114 @@
+.search-error-container {
+    display: block;
+    text-align: center;
+    margin-top: 32px;
+    margin-bottom: 32px;
+}
+
+.search-error-header {
+    position: relative;
+    padding-bottom: 12px;
+    font-size: 36px;
+    line-height: 120%;
+    color: #404145;
+}
+
+.search-error-text {
+    max-width: 500px;
+    margin: 0 auto;
+    font-size: 24px;
+    line-height: 26px;
+    color: #62646a;
+}
+
+.search-error-image {
+    position: relative;
+    margin-top: 7%;
+    margin-bottom: 32px;
+    height: 300px;
+}
+
+.search-error-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.search-main-container {
+    margin: 0 126px;
+}
+
+.search-header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-top: 32px;
+    padding-bottom: 12px;
+}
+
+.title {
+    color: #000;
+    font-size: 32px;
+    line-height: 150%;
+    font-weight: 700;
+}
+
+.number-of-results {
+    color: #74767e;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 600;
+    padding: 0 10px;
+}
+
+.gig-card-layout {
+    width: 100%;
+    min-width: 245px;
+}
+
+.gig-wrapper {
+    box-sizing: border-box;
+    background-color: #fff;
+    position: relative;
+    border: 1px solid #e4e5e7;
+    width: 100%;
+}
+
+.media {
+    display: block;
+    box-sizing: border-box;
+    background-color: #efeff0;
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 60%;
+}
+
+.seller-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.inner-wrapper {
+    line-height: 120%;
+    box-sizing: border-box;
+    padding: 12px 12px 8px;
+    height: 54px;
+    width: 100%;
+}
+
+.seller-identifiers {
+    margin-left: 8px;
+    width: calc(100% - 24px);
+}
+
+.seller-name {
+    color: #222325;
+    line-height: 18px;
+    font-weight: 600;
+}
