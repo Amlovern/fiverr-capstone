@@ -10,6 +10,7 @@ import magnifyingGlass from '../../images/magnifying-glass.svg';
 export default function SearchBar() {
     const dispatch = useDispatch();
     const history = useHistory();
+    const currentUrl = window.location.href;
 
     const gigs = useSelector((state) => state.gig.gigsByGigId);
 
@@ -25,8 +26,13 @@ export default function SearchBar() {
     }
 
     useEffect(() => {
-        dispatch(gigActions.getAllGigsThunk());
-    }, [dispatch])
+        setQuery('');
+    }, [currentUrl])
+
+    // To Do: for predictive search implementation
+    // useEffect(() => {
+    //     dispatch(gigActions.getAllGigsThunk());
+    // }, [dispatch])
 
     if (!gigs) {
         return null;
@@ -39,6 +45,7 @@ export default function SearchBar() {
                     type='search'
                     autoComplete='off'
                     className='search-input'
+                    value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     placeholder='What service are you looking for today?'
                 />
