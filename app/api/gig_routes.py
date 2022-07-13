@@ -61,7 +61,7 @@ def create_new_gig():
             ownerId=form.data['ownerId'],
             categoryId=form.data['categoryId'],
             title=form.data['title'],
-            # image=form.data['imageUrl'],
+            image=form.data['imageUrl'],
             queue=0,
             description=form.data['description'],
             price=form.data['price'],
@@ -93,7 +93,7 @@ def update_gig(id):
         session_gig.categoryId = form.data['categoryId']
         session_gig.description = form.data['description']
         session_gig.title=form.data['title']
-        # session_gig.image=form.data['imageUrl']
+        session_gig.image=form.data['imageUrl']
         session_gig.price = form.data['price']
         session_gig.deliveryTimeline = form.data['deliveryTimeline']
         session_gig.returnTimeline = form.data['returnTimeline']

@@ -2,3 +2,13 @@
 * {
     font-family: Macan,Helvetica Neue,Helvetica,Arial,sans-serif;
 }
+
+a {
+    color: #404145;
+    text-decoration: none;
+    transition: color .2s;
+}
+
+a:hover {
+    color: #1dbf73;
+}

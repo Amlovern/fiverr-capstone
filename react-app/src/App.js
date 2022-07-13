@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import MainNavBar from './components/MainNavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
-import User from './components/User';
 import SplashPage from './components/SplashPage';
 import GigDetail from './components/GigDetail';
 import AddGigForm from './components/AddGigForm';
@@ -15,6 +15,9 @@ import AddOrderForm from './components/AddOrderForm';
 import OrderConfirmation from './components/OrderConfirmation';
 import OrdersPage from './components/OrdersPage';
 import UpdateOrderForm from './components/UpdateOrderForm';
+import AboutPage from './components/AboutPage';
+import SearchResultsPage from './components/SearchResultsPage';
+
 import { authenticate } from './store/session';
 
 import * as categoryActions from './store/category'
@@ -41,6 +44,9 @@ function App() {
     <BrowserRouter>
       <MainNavBar />
       <Switch>
+        <Route path='/about' exact={true}>
+          <AboutPage />
+        </Route>
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
@@ -74,6 +80,9 @@ function App() {
         <ProtectedRoute path='/orders/:orderId/update' exact={true}>
           <UpdateOrderForm />
         </ProtectedRoute>
+        <Route path='/search/:query' >
+          <SearchResultsPage />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

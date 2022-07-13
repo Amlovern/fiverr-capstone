@@ -3,6 +3,7 @@ const GET_ONE_GIG = 'gig/GET_ONE_GIG';
 const ADD_GIG = 'gig/ADD_GIG';
 const UPDATE_GIG = 'gig/UPDATE_GIG';
 const DELETE_GIG = 'gig/DELETE_GIG';
+const SEARCH_GIG = 'gig/SEARCH_GIG';
 
 // REGULAR ACTION CREATORS
 const getAllGigs = ({ gigsByOwnerId, gigsByCategoryId, gigsByGigId }) => ({
@@ -28,6 +29,11 @@ const updateGig = (oldCategoryId, newCategoryId, gigId, updatedGig) => ({
 const deleteGig = (categoryId, ownerId, gigId) => ({
     type: DELETE_GIG,
     payload: { categoryId, ownerId, gigId }
+})
+
+const searchGig = ({ gigsByGigId }) => ({
+    type: SEARCH_GIG,
+    payload: { gigsByGigId }
 })
 
 
@@ -62,7 +68,7 @@ export const addNewGigThunk = (formData) => async (dispatch) => {
             ownerId: formData.ownerId,
             categoryId: formData.categoryId,
             title: formData.title,
-            // imageUrl: formData.image,
+            imageUrl: formData.image,
             queue: formData.queue,
             description: formData.description,
             price: formData.price,
@@ -98,7 +104,7 @@ export const updateOneGigThunk = (gig, formData) => async (dispatch) => {
             ownerId: formData.ownerId,
             categoryId: formData.category,
             title: formData.title,
-            // imageUrl: formData.image,
+            imageUrl: formData.image,
             queue: formData.queue,
             description: formData.description,
             price: formData.price,
@@ -131,6 +137,17 @@ export const deleteOneGigThunk = (categoryId, ownerId, gigId) => async (dispatch
         if (resBody.message === 'Success') {
             dispatch(deleteGig(categoryId, ownerId, gigId));
         }
+        return response;
+    } else throw response;
+};
+
+export const searchGigThunk = (searchString) => async (dispatch) => {
+    console.log('SEARCH STRING', searchString);
+    const response = await fetch(`/api/search/${searchString}`);
+
+    if (response.ok) {
+        const gigsData = await response.json();
+        dispatch(searchGig(gigsData));
         return response;
     } else throw response;
 };
@@ -294,6 +311,11 @@ const gigReducer = (state = initialState, action) => {
 
             // remove gig from gigsByGigId
             delete newState.gigsByGigId[gigId];
+
+            return newState;
+
+        case SEARCH_GIG:
+            newState.gigsByGigId = action.payload.gigsByGigId;
 
             return newState;
 

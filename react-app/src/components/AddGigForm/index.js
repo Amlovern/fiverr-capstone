@@ -15,7 +15,7 @@ export default function AddGigForm() {
 
     const [title, setTitle] = useState('');
     const [category, setCategory] = useState(1);
-    // const [imageUrl, setImageUrl] = useState('');
+    const [imageUrl, setImageUrl] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('null');
     const [deliveryTimeline, setDeliveryTimeline] = useState('null');
@@ -41,7 +41,7 @@ export default function AddGigForm() {
             ownerId: currentUser.id,
             categoryId: parseInt(category),
             title: title,
-            // image: imageUrl,
+            image: imageUrl,
             description: description,
             price: parseInt(price),
             deliveryTimeline: parseInt(deliveryTimeline),
@@ -116,7 +116,7 @@ export default function AddGigForm() {
                         ))}
                     </select>
                 </div>
-                {/* <div className='input-wrapper'>
+                <div className='input-wrapper'>
                     <label className='label-for-input-field'>Image URL</label>
                     <input
                         className='input-field'
@@ -126,7 +126,7 @@ export default function AddGigForm() {
                         placeholder='Image URL'
                         required
                     />
-                </div> */}
+                </div>
                 <div className='input-wrapper'>
                     <label className='label-for-input-field'>Description</label>
                     <textarea 

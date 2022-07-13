@@ -71,9 +71,9 @@ export default function OrderConfirmation() {
         <div className='main-order-confirmation-container'>
             <div className='main'>
                 <div className='order-confirmation-header'>Order Confirmation # {currentOrder.id}</div>
-                {/* <div className='gig-image-container'>
+                <div className='gig-image-container'>
                     <img className='gig-image' src={currentGig?.image} alt='Gig' />
-                </div> */}
+                </div>
 
                 <div className='order-detail-container'>
                     <div className='order-detail-section'>

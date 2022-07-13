@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
+import SearchBar from '../SearchBar';
 
 import githubLogo from '../../images/github.svg';
 
@@ -73,7 +74,12 @@ const NavBar = () => {
             <span className='header-logo-end'>.</span>
           </NavLink>
         </li>
-        <li className='navbar-link'>
+        <li className='navbar-link navbar-login'>
+          <NavLink to='/about' exact={true} activeClassName='active'>
+            About Us
+          </NavLink>
+        </li>
+        {/* <li className='navbar-link'>
           <a
             href='https://github.com/Amlovern'
             target='_blank'
@@ -81,7 +87,8 @@ const NavBar = () => {
           >
             <img src={githubLogo} height='20px' alt='github' />
           </a>
-        </li>
+        </li> */}
+        <SearchBar />
         <div className='session-link-wrapper'>
           {sessionLinks}
         </div>
