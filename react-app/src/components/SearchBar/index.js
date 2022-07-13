@@ -17,9 +17,11 @@ export default function SearchBar() {
 
     const handleSearch = (e) => {
         e.preventDefault();
-        console.log('SEARCH CLICKED', query)
-        history.push(`/search/${query}`);
-        // dispatch(gigActions.searchGigThunk(query))
+        if (query === '') {
+            alert("Please enter a valid search.")
+        } else {
+            history.push(`/search/${query}`);
+        }
     }
 
     useEffect(() => {

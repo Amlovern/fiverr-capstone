@@ -46,45 +46,51 @@ export default function SearchResultsPage() {
                     <p className='search-error-text'>Try a new search find what you are looking for.</p>
                 </div>
             )}
-            <div className='search-main-container'>
-                <h2 className='search-header'>
-                    <span className='title'>Results for "{query}"</span>
-                </h2>
-                <div className='number-of-results'>
-                    <span>{gigs?.length} services available</span>
-                </div>
-                <div className='search-results-grid'>
-                    {gigs?.map((gig, idx) => (
-                        <div className='gig-card-layout' key={idx}>
-                            <div className='gig-wrapper'>
-                                <a href={`/gigs/${gig.id}`} target="_blank" rel='noreferrer' className='media'>
-                                    <img src={gig.image} alt='gig' />
-                                </a>
-                                {/* <div className='seller-info'>
-                                    <div className='inner-wrapper'>
-                                        <div className='seller-identifiers'>
-                                            <div className='seller-name'>{}</div>
+            {gigs.length > 0 && (
+                <div className='search-main-container'>
+                    <h2 className='search-header'>
+                        <span className='title'>Results for "{query}"</span>
+                    </h2>
+                    <div className='number-of-results'>
+                        <span>{gigs?.length} services available</span>
+                    </div>
+                    <div className='search-results-grid'>
+                        {gigs?.map((gig, idx) => (
+                            <div className='gig-card-layout' key={idx}>
+                                <div className='gig-wrapper'>
+                                    <a href={`/gigs/${gig.id}`} target="_blank" rel='noreferrer' className='media'>
+                                        <div className='slider'>
+                                            <div className='slide-preview'>
+                                                <img src={gig.image} alt='gig' />
+                                            </div>
                                         </div>
-                                    </div>
-                                </div> */}
-                                <h3>
-                                    <a href={`/gigs/${gig.id}`} target="_blank" rel='noreferrer'>{gig.title}</a>
-                                </h3>
-                                <footer className='search-result-footer'>
-                                    <a href={`/gigs/${gig.id}`} target="_blank" rel='noreferrer' className='search-result-price'>
-                                        <small>
-                                            Starting at
-                                        </small>
-                                        <span>
-                                            ${gig.price}
-                                        </span>
                                     </a>
-                                </footer>
+                                    {/* <div className='seller-info'>
+                                        <div className='inner-wrapper'>
+                                            <div className='seller-identifiers'>
+                                                <div className='seller-name'>{}</div>
+                                            </div>
+                                        </div>
+                                    </div> */}
+                                    <h3>
+                                        <a href={`/gigs/${gig.id}`} target="_blank" rel='noreferrer'>{gig.title}</a>
+                                    </h3>
+                                    <footer className='search-result-footer'>
+                                        <a href={`/gigs/${gig.id}`} target="_blank" rel='noreferrer' className='search-result-price'>
+                                            <small>
+                                                Starting at
+                                            </small>
+                                            <span>
+                                                ${gig.price}
+                                            </span>
+                                        </a>
+                                    </footer>
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
-            </div>
+            )}
         </div>
     )
 }
