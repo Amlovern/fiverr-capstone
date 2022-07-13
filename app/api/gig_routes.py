@@ -2,6 +2,7 @@ from flask import Blueprint, request
 from flask_login import login_required
 from app.models import Gig, User, Category, db
 from app.forms import GigForm
+from app.s3_helpers import allowed_file, get_unique_filename, upload_file_to_s3
 from .utils import validation_errors_to_error_messages
 
 gig_routes = Blueprint('gig', __name__)
@@ -57,11 +58,29 @@ def create_new_gig():
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
+        if "image" not in request.files:
+            return {"errors": ["type: Please choose an Image file"]}, 400
+
+        image = request.files["image"]
+
+        if not allowed_file(image.filename):
+            return {"errors": ["type: File type not permitted (Only .png, .jpg, .jpeg, .gif permitted)"]}, 400
+
+        image.filename = get_unique_filename(image.filename)
+
+        upload = upload_file_to_s3(image)
+
+        if "url" not in upload:
+            return upload, 400
+
+        url = upload["url"]
+
+
         params = dict(
             ownerId=form.data['ownerId'],
             categoryId=form.data['categoryId'],
             title=form.data['title'],
-            image=form.data['imageUrl'],
+            image=url,
             queue=0,
             description=form.data['description'],
             price=form.data['price'],
@@ -104,6 +123,35 @@ def update_gig(id):
     
     if form.errors:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 418
+
+
+# Update Gig Image
+@gig_routes.route('/<int:id>/image', methods=['POST'])
+@login_required
+def upload_gig_image(id):
+
+    if "image" not in request.files:
+        return {"errors": ["Please choose an Image file"]}, 400
+
+    image = request.files["image"]
+
+    if not allowed_file(image.filename):
+        return {"errors": ["File type not permitted (Only .png, .jpg, .jpeg, .gif permitted"]}, 400
+
+    image.filename = get_unique_filename(image.filename)
+
+    upload = upload_file_to_s3(image)
+
+    if "url" not in upload:
+        return upload, 400
+
+    url = upload["url"]
+
+    current_gig = Gig.query.get(id)
+    current_gig.image = url
+    db.session.commit()
+
+    return {"url": url}
 
 
 # Delete One Gig
