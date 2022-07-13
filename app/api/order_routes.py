@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from flask_login import login_required
-from app.models import db, Order
+from app.models import db, Order, Gig
 from app.forms import OrderForm
 from .utils import validation_errors_to_error_messages
 
@@ -48,6 +48,10 @@ def create_new_order():
 
         new_order = Order(**params)
         db.session.add(new_order)
+
+        order_gig = Gig.query.get(new_order.gigId)
+        order_gig.queue = order_gig.queue + 1
+
         db.session.commit()
 
         return new_order.to_dict()
@@ -85,7 +89,12 @@ def update_order(id):
 @login_required
 def delete_order(id):
     order = Order.query.get(id)
+
+    order_gig = Gig.query.get(order.gigId)
+    order_gig.queue = order_gig.queue - 1
+    
     db.session.delete(order)
+    
     db.session.commit()
     return {'message': 'Success'}
 
