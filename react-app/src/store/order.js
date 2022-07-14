@@ -60,6 +60,7 @@ export const AddNewOrderThunk = (formData) => async (dispatch) => {
         body: JSON.stringify({
             userId: formData.userId,
             gigId: formData.gigId,
+            gigImage: formData.gigImage,
             deliveryInstructions: formData.deliveryInstructions,
             placed: formData.placed,
             due: formData.due
@@ -89,6 +90,7 @@ export const updateOneOrderThunk = (order, formData) => async (dispatch) => {
         body: JSON.stringify({
             userId: formData.userId,
             gigId: formData.gigId,
+            gigImage: formData.gigImage,
             deliveryInstructions: formData.deliveryInstructions,
             placed: formData.placed,
             due: formData.due

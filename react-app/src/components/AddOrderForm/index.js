@@ -16,6 +16,7 @@ export default function AddOrderForm() {
 
     const gigId = params.gigId;
     const currentGig = gigs.gigsByGigId[gigId];
+    const currentGigImage = currentGig.image;
     const deliveryTimeline = currentGig?.deliveryTimeline;
 
     const [deliveryInstructions, setDeliveryInstructions] = useState('');
@@ -39,6 +40,7 @@ export default function AddOrderForm() {
         const formData = {
             userId: currentUser.id,
             gigId: gigId,
+            gigImage: currentGigImage,
             deliveryInstructions: deliveryInstructions,
             placed: new Date(today),
             due: new Date(addDays(today, deliveryTimeline))

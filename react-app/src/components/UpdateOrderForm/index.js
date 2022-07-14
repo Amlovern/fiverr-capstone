@@ -18,6 +18,7 @@ export default function UpdateOrderForm() {
     const orderId = params.orderId;
     const currentOrder = orders[orderId];
     const currentGig = gigs.gigsByGigId[currentOrder?.gigId];
+    const currentGigImage = currentGig.image;
 
     const [deliveryInstructions, setDeliveryInstructions] = useState(currentOrder?.deliveryInstructions);
     const [updateErrors, setUpdateErrors] = useState([]);
@@ -36,6 +37,7 @@ export default function UpdateOrderForm() {
         const formData = {
             userId: currentUser.id,
             gigId: currentOrder.gigId,
+            gigImage: currentGigImage,
             deliveryInstructions: deliveryInstructions,
             placed: new Date(currentOrder.placed),
             due: new Date(currentOrder.due)
