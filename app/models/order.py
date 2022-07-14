@@ -8,6 +8,7 @@ class Order(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
   gigId = db.Column(db.Integer, db.ForeignKey('gigs.id'), nullable=False)
+  gigImage = db.Column(db.String(1000))
   deliveryInstructions = db.Column(db.Text)
   placed = db.Column(db.DateTime, nullable=False)
   due = db.Column(db.DateTime, nullable=False)
@@ -22,6 +23,7 @@ class Order(db.Model):
       'id': self.id,
       'userId': self.userId,
       'gigId': self.gigId,
+      'gigImage': self.gigImage,
       'deliveryInstructions': self.deliveryInstructions,
       'placed': self.placed,
       'due': self.due,

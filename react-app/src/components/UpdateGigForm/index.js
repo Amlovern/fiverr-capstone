@@ -19,12 +19,13 @@ export default function UpdateGigForm() {
 
     const [title, setTitle] = useState(currentGig?.title);
     const [category, setCategory] = useState(currentGig?.categoryId);
-    const [imageUrl, setImageUrl] = useState(currentGig?.image);
+    const [image, setImage] = useState(currentGig?.image);
     const [description, setDescription] = useState(currentGig?.description);
     const [price, setPrice] = useState(currentGig?.price);
     const [deliveryTimeline, setDeliveryTimeline] = useState(currentGig?.deliveryTimeline);
     const [returnTimeline, setReturnTimeline] = useState(currentGig?.returnTimeline);
-    const [updateErrors, setUpdateErrors] = useState([])
+    const [updateErrors, setUpdateErrors] = useState([]);
+    const [imageLoading, setImageLoading] = useState(false);
 
     const categoriesList = []
     Object.values(categories).forEach(category => {
@@ -39,16 +40,18 @@ export default function UpdateGigForm() {
         e.preventDefault();
         setUpdateErrors([]);
 
-        const formData = {
-            ownerId: currentUser.id,
-            category: parseInt(category),
-            title: title,
-            image: imageUrl,
-            description: description,
-            price: parseInt(price),
-            deliveryTimeline: parseInt(deliveryTimeline),
-            returnTimeline: parseInt(returnTimeline)
-        }
+        const formData = new FormData();
+
+        formData.append('ownerId', currentUser.id);
+        formData.append('categoryId', parseInt(category));
+        formData.append('title', title);
+        formData.append('description', description);
+        formData.append('price', parseInt(price));
+        formData.append('deliveryTimeline', parseInt(deliveryTimeline));
+        formData.append('returnTimeline', parseInt(returnTimeline));
+        formData.append('image', image);
+
+        setImageLoading(true);
 
         try {
             const data = dispatch(gigActions.updateOneGigThunk(currentGig, formData));
@@ -57,7 +60,8 @@ export default function UpdateGigForm() {
                     if (res.id) {
                         data.then(res => history.push(`/gigs/${res.id}`))
                     } else {
-                        setUpdateErrors(data.errors)
+                        setImageLoading(false);
+                        setUpdateErrors(res);
                         return;
                     }
                 })
@@ -68,14 +72,19 @@ export default function UpdateGigForm() {
         };
     };
 
+    const addImage = (e) => {
+        const file = e.target.files[0];
+        setImage(file);
+    };
+
     const handleCancel = (e) => {
         e.preventDefault();
         return history.goBack();
-    }
+    };
 
     if (!currentUser || !gigs) {
-        return null
-    }
+        return null;
+    };
 
     return (
         <div className='update-gig-form-page'>
@@ -100,7 +109,6 @@ export default function UpdateGigForm() {
                         onChange={(e) => setTitle(e.target.value)}
                         value={title}
                         placeholder='Title'
-                        required
                     />
                 </div>
                 <div className='input-wrapper'>
@@ -117,7 +125,7 @@ export default function UpdateGigForm() {
                         ))}
                     </select>
                 </div>
-                <div className='input-wrapper'>
+                {/* <div className='input-wrapper'>
                     <label className='label-for-input-field'>Image URL</label>
                     <input
                         className='input-field'
@@ -127,7 +135,7 @@ export default function UpdateGigForm() {
                         placeholder='Image URL'
                         required
                     />
-                </div>
+                </div> */}
                 <div className='input-wrapper'>
                     <label className='label-for-input-field'>Description</label>
                     <textarea 
@@ -148,7 +156,6 @@ export default function UpdateGigForm() {
                         onChange={(e) => setPrice(e.target.value)}
                         value={price}
                         placeholder='Price'
-                        required
                     />
                 </div>
                 <div className='input-wrapper'>
@@ -160,7 +167,6 @@ export default function UpdateGigForm() {
                         onChange={(e) => setDeliveryTimeline(e.target.value)}
                         value={deliveryTimeline}
                         placeholder='Expected delivery timeline? (In days)'
-                        required
                     />
                 </div>
                 <div className='input-wrapper'>
@@ -172,15 +178,24 @@ export default function UpdateGigForm() {
                         onChange={(e) => setReturnTimeline(e.target.value)}
                         value={returnTimeline}
                         placeholder='Order cancellation timeline? (In days)'
-                        required
                     />
                 </div>
+                <div className='input-wrapper'>
+                    <label className='label-for-input-field'>Please upload a photo for your gig:</label>
+                    <span className='label-required'>* Required</span>
+                    <input type='file' accept='image/*' onChange={addImage} />
+                </div>
+
+                {imageLoading && (
+                    <p className='image-loading'>Uploading File, please wait...</p>
+                )}
 
                 <div className='update-gig-btn-container'>
                     <button
                         className='update-gig-btn'
                         type='button'
                         onClick={handleCancel}
+                        disabled={imageLoading}
                     >
                         Cancel
                     </button>
@@ -189,6 +204,7 @@ export default function UpdateGigForm() {
                     <button
                         className='update-gig-btn'
                         type='submit'
+                        disabled={imageLoading}
                     >
                         Submit
                     </button>

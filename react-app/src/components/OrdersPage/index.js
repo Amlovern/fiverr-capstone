@@ -20,7 +20,7 @@ export default function OrdersPage() {
     useEffect(() => {
         dispatch(orderActions.getAllOrdersThunk(sessionUser?.id));
         dispatch(gigActions.getAllGigsThunk());
-    }, [dispatch])
+    }, [dispatch, sessionUser])
 
     useEffect(() => {
         let ordersArr = [];
@@ -32,7 +32,7 @@ export default function OrdersPage() {
         }
     }, [ordersState])
 
-    if (!sessionUser) {
+    if (!sessionUser || !gigsByGigId) {
         return null
     }
 
@@ -47,7 +47,7 @@ export default function OrdersPage() {
                 </div>
                 <div className='orders-container'>
                     {orders?.map((order, idx) => (
-                        <div className='order-details-container' key={idx}>
+                        <div className='order-details-container' key={idx} style={{backgroundImage: `url(${order.gigImage})`}} >
                             <div className='overlay' onClick={() => history.push(`/orders/${order?.id}`)}>
                                 <div className='items'></div>
                                 <div className='items head'>

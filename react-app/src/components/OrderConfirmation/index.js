@@ -25,7 +25,7 @@ export default function OrderConfirmation() {
     useEffect(() => {
         dispatch(gigActions.getAllGigsThunk());
         dispatch(orderActions.getAllOrdersThunk(sessionUser?.id));
-    }, [dispatch]);
+    }, [dispatch, sessionUser]);
 
     const addDays = (date, days) => {
         let result = new Date(date);
@@ -72,7 +72,7 @@ export default function OrderConfirmation() {
             <div className='main'>
                 <div className='order-confirmation-header'>Order Confirmation # {currentOrder.id}</div>
                 <div className='gig-image-container'>
-                    <img className='gig-image' src={currentGig?.image} alt='Gig' />
+                    <img className='gig-image' src={currentOrder?.gigImage} alt='Gig' />
                 </div>
 
                 <div className='order-detail-container'>

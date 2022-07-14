@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms.fields import IntegerField, TextAreaField
+from wtforms.fields import IntegerField, TextAreaField, StringField
 from wtforms.validators import DataRequired, Length, ValidationError
 
 
@@ -13,6 +13,9 @@ def delivery_instructions_length(form, field):
 class OrderForm(FlaskForm):
     userId = IntegerField('userId', validators=[DataRequired(message='Please enter a valid User ID')])
     gigId = IntegerField('gigId', validators=[DataRequired(message='Please enter a valid Gig ID')])
+    gigImage = StringField('gigImage', validators=[
+        DataRequired(message='Please add the gig image for this order')
+    ])
     deliveryInstructions = TextAreaField('deliveryInstructions', validators=[delivery_instructions_length])
     placed = TextAreaField('placed', validators=[DataRequired(message='Please enter a valid Order Placed Date')])
     due = TextAreaField('due', validators=[DataRequired(message='Please enter a valid Order Due Date')])
