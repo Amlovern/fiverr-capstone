@@ -1,4 +1,4 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, session
 from flask_login import login_required
 from app.models import db, Order, Gig
 from app.forms import OrderForm
@@ -41,6 +41,7 @@ def create_new_order():
         params = dict(
             userId=form.data['userId'],
             gigId=form.data['gigId'],
+            gigImage=form.data['gigImage'],
             deliveryInstructions = form.data['deliveryInstructions'],
             placed=form.data['placed'],
             due=form.data['due']
@@ -72,6 +73,7 @@ def update_order(id):
 
         session_order.userId = form.data['userId']
         session_order.gigId = form.data['gigId']
+        session_order.gigImage = form.data['gigImage']
         session_order.deliveryInstructions = form.data['deliveryInstructions']
         session_order.placed = form.data['placed']
         session_order.due = form.data['due']

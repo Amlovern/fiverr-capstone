@@ -6,6 +6,7 @@ def seed_orders():
   christian = Order(
     userId=1,
     gigId=2,
+    gigImage='https://nerdrr.s3.amazonaws.com/fruits-basket.jpg',
     deliveryInstructions='Please mail directly to me.',
     placed=datetime(2022, 6, 5, 8, 10, 10, 10),
     due=datetime(2022, 6, 12, 8, 10, 10, 10)
@@ -13,6 +14,7 @@ def seed_orders():
   james = Order(
     userId=4,
     gigId=4,
+    gigImage='https://nerdrr.s3.amazonaws.com/dnd-mini.jpg',
     deliveryInstructions='Please mail directly to me.',
     placed=datetime(2022, 5, 29, 8, 10, 10, 10),
     due=datetime(2022, 6, 8, 8, 10, 10, 10)
@@ -20,6 +22,7 @@ def seed_orders():
   sherman = Order(
     userId=2,
     gigId=1,
+    gigImage='https://nerdrr.s3.amazonaws.com/indie-game.jpg',
     deliveryInstructions='Please mail directly to me.',
     placed=datetime(2022, 3, 11, 8, 10, 10, 10),
     due=datetime(2022, 4, 10, 8, 10, 10, 10)
@@ -27,6 +30,7 @@ def seed_orders():
   brian = Order(
     userId=3,
     gigId = 3,
+    gigImage='https://nerdrr.s3.amazonaws.com/demon-slayer.jpg',
     deliveryInstructions='Please mail directly to me.',
     placed=datetime(2022, 6, 7, 8, 10, 10, 10),
     due=datetime(2022, 6, 10, 8, 10, 10, 10)
