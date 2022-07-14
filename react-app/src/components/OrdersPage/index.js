@@ -32,9 +32,13 @@ export default function OrdersPage() {
         }
     }, [ordersState])
 
-    if (!sessionUser) {
+    if (!sessionUser || !gigsByGigId) {
         return null
     }
+
+    // BACKGROUND IMAGE NOT WORKING. NEED TO CONTINUE TESTING AND FIGURE OUT HOW I DID IT BEFORE
+    // Change Order backend to include gig image url
+    console.log(gigsByGigId[1]?.image)
 
     return (
         <div className='user-orders-container'>
@@ -47,7 +51,7 @@ export default function OrdersPage() {
                 </div>
                 <div className='orders-container'>
                     {orders?.map((order, idx) => (
-                        <div className='order-details-container' key={idx}>
+                        <div className='order-details-container' key={idx} style={{backgroundImage: new URL(`${gigsByGigId[order.id]?.image}`)}} >
                             <div className='overlay' onClick={() => history.push(`/orders/${order?.id}`)}>
                                 <div className='items'></div>
                                 <div className='items head'>

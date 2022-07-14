@@ -15,12 +15,13 @@ export default function AddGigForm() {
 
     const [title, setTitle] = useState('');
     const [category, setCategory] = useState(1);
-    const [imageUrl, setImageUrl] = useState('');
+    const [image, setImage] = useState(null);
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('null');
     const [deliveryTimeline, setDeliveryTimeline] = useState('null');
     const [returnTimeline, setReturnTimeline] = useState('null');
-    const [addErrors, setAddErrors] = useState([])
+    const [addErrors, setAddErrors] = useState([]);
+    const [imageLoading, setImageLoading] = useState(false);
 
     const categoriesList = []
     Object.values(categories).forEach(category => {
@@ -31,46 +32,52 @@ export default function AddGigForm() {
         dispatch(gigActions.getAllGigsThunk())
     }, [dispatch])
 
-    // console.log(categoriesList)
-
     const handleSubmit = async (e) => {
         e.preventDefault()
         setAddErrors([])
 
-        const formData = {
-            ownerId: currentUser.id,
-            categoryId: parseInt(category),
-            title: title,
-            image: imageUrl,
-            description: description,
-            price: parseInt(price),
-            deliveryTimeline: parseInt(deliveryTimeline),
-            returnTimeline: parseInt(returnTimeline)
-        }
+        const formData = new FormData();
+
+        formData.append('ownerId', currentUser.id);
+        formData.append('categoryId', parseInt(category));
+        formData.append('title', title);
+        formData.append('description', description);
+        formData.append('price', parseInt(price));
+        formData.append('deliveryTimeline', parseInt(deliveryTimeline));
+        formData.append('returnTimeline', parseInt(returnTimeline));
+        formData.append('image', image);
+
+        setImageLoading(true);
 
         try {
             const data = dispatch(gigActions.addNewGigThunk(formData));
             if (data) {
                 data.then((res) => {
-                    console.log(res)
                     if (res.id) {
                         data.then(res => history.push(`/gigs/${res.id}`))
                     } else {
+                        setImageLoading(false);
                         setAddErrors(res);
                         return;
                     }
                 })
             }
         } catch (errorResponse) {
+            setImageLoading(false);
             setAddErrors(['Something went wrong, please try again.']);
-            console.log('Failed Request: ', errorResponse)
+            console.log('Failed Request: ', errorResponse);
         };
     };
 
+    const addImage = (e) => {
+        const file = e.target.files[0];
+        setImage(file);
+    };
+
     const handleCancel = (e) => {
-        e.preventDefault()
-        return history.goBack()
-    }
+        e.preventDefault();
+        return history.goBack();
+    };
     
     if (!currentUser || !gigs) {
         return null
@@ -116,7 +123,7 @@ export default function AddGigForm() {
                         ))}
                     </select>
                 </div>
-                <div className='input-wrapper'>
+                {/* <div className='input-wrapper'>
                     <label className='label-for-input-field'>Image URL</label>
                     <input
                         className='input-field'
@@ -126,7 +133,7 @@ export default function AddGigForm() {
                         placeholder='Image URL'
                         required
                     />
-                </div>
+                </div> */}
                 <div className='input-wrapper'>
                     <label className='label-for-input-field'>Description</label>
                     <textarea 
@@ -174,12 +181,21 @@ export default function AddGigForm() {
                         required
                     />
                 </div>
+                <div className='input-wrapper'>
+                    <label className='label-for-input-field'>Please upload a photo for your gig:</label>
+                    <input type='file' accept='image/*' onChange={addImage} />
+                </div>
+
+                {imageLoading && (
+                    <p className='image-loading'>Uploading File, please wait...</p>
+                )}
 
                 <div className='add-gig-btn-container'>
                     <button
                         className='add-gig-btn'
                         type='button'
                         onClick={handleCancel}
+                        disabled={imageLoading}
                     >
                         Cancel
                     </button>
@@ -188,6 +204,7 @@ export default function AddGigForm() {
                     <button
                         className='add-gig-btn'
                         type='submit'
+                        disabled={imageLoading}
                     >
                         Submit
                     </button>
