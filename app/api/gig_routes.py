@@ -106,13 +106,30 @@ def update_gig(id):
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
+        if "image" not in request.files:
+            return {"errors": ["type: Please choose an Image file"]}, 400
+
+        image = request.files['image']
+
+        if not allowed_file(image.filename):
+            return {"errors": ["type: File type not permitted (Only .png, .jpg, .jpeg, .gif permitted)"]}, 400
+
+        image.filename = get_unique_filename(image.filename)
+
+        upload = upload_file_to_s3(image)
+
+        if "url" not in upload:
+            return upload, 400
+
+        url = upload['url']
+
         session_gig = Gig.query.get(id)
 
         session_gig.ownerId = form.data['ownerId']
         session_gig.categoryId = form.data['categoryId']
         session_gig.description = form.data['description']
         session_gig.title=form.data['title']
-        session_gig.image=form.data['imageUrl']
+        session_gig.image=url
         session_gig.price = form.data['price']
         session_gig.deliveryTimeline = form.data['deliveryTimeline']
         session_gig.returnTimeline = form.data['returnTimeline']

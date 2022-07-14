@@ -97,20 +97,21 @@ export const updateOneGigThunk = (gig, formData) => async (dispatch) => {
 
     const response = await fetch(`/api/gig/${gig.id}`, {
         method: 'PATCH',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            ownerId: formData.ownerId,
-            categoryId: formData.category,
-            title: formData.title,
-            imageUrl: formData.image,
-            queue: formData.queue,
-            description: formData.description,
-            price: formData.price,
-            deliveryTimeline: formData.deliveryTimeline,
-            returnTimeline: formData.returnTimeline
-        })
+        // headers: {
+        //     'Content-Type': 'application/json'
+        // },
+        body: formData
+        // body: JSON.stringify({
+        //     ownerId: formData.ownerId,
+        //     categoryId: formData.category,
+        //     title: formData.title,
+        //     imageUrl: formData.image,
+        //     queue: formData.queue,
+        //     description: formData.description,
+        //     price: formData.price,
+        //     deliveryTimeline: formData.deliveryTimeline,
+        //     returnTimeline: formData.returnTimeline
+        // })
     })
 
     if (response.ok) {
