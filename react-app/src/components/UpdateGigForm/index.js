@@ -60,7 +60,8 @@ export default function UpdateGigForm() {
                     if (res.id) {
                         data.then(res => history.push(`/gigs/${res.id}`))
                     } else {
-                        setUpdateErrors(data.errors)
+                        setImageLoading(false);
+                        setUpdateErrors(res);
                         return;
                     }
                 })
@@ -108,7 +109,6 @@ export default function UpdateGigForm() {
                         onChange={(e) => setTitle(e.target.value)}
                         value={title}
                         placeholder='Title'
-                        required
                     />
                 </div>
                 <div className='input-wrapper'>
@@ -156,7 +156,6 @@ export default function UpdateGigForm() {
                         onChange={(e) => setPrice(e.target.value)}
                         value={price}
                         placeholder='Price'
-                        required
                     />
                 </div>
                 <div className='input-wrapper'>
@@ -168,7 +167,6 @@ export default function UpdateGigForm() {
                         onChange={(e) => setDeliveryTimeline(e.target.value)}
                         value={deliveryTimeline}
                         placeholder='Expected delivery timeline? (In days)'
-                        required
                     />
                 </div>
                 <div className='input-wrapper'>
@@ -180,11 +178,11 @@ export default function UpdateGigForm() {
                         onChange={(e) => setReturnTimeline(e.target.value)}
                         value={returnTimeline}
                         placeholder='Order cancellation timeline? (In days)'
-                        required
                     />
                 </div>
                 <div className='input-wrapper'>
                     <label className='label-for-input-field'>Please upload a photo for your gig:</label>
+                    <span className='label-required'>* Required</span>
                     <input type='file' accept='image/*' onChange={addImage} />
                 </div>
 

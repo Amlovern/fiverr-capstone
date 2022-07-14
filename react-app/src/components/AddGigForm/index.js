@@ -106,7 +106,7 @@ export default function AddGigForm() {
                         onChange={(e) => setTitle(e.target.value)}
                         value={title}
                         placeholder='Title'
-                        required
+                        // required
                     />
                 </div>
                 <div className='input-wrapper'>
@@ -154,7 +154,7 @@ export default function AddGigForm() {
                         onChange={(e) => setPrice(e.target.value)}
                         value={price !== 'null' ? price : ''}
                         placeholder='Price'
-                        required
+                        // required
                     />
                 </div>
                 <div className='input-wrapper'>
@@ -166,7 +166,7 @@ export default function AddGigForm() {
                         onChange={(e) => setDeliveryTimeline(e.target.value)}
                         value={deliveryTimeline !== 'null' ? deliveryTimeline : ''}
                         placeholder='Expected delivery timeline? (In days)'
-                        required
+                        // required
                     />
                 </div>
                 <div className='input-wrapper'>
@@ -178,11 +178,12 @@ export default function AddGigForm() {
                         onChange={(e) => setReturnTimeline(e.target.value)}
                         value={returnTimeline !== 'null' ? returnTimeline : ''}
                         placeholder='Order cancellation timeline? (In days)'
-                        required
+                        // required
                     />
                 </div>
                 <div className='input-wrapper'>
                     <label className='label-for-input-field'>Please upload a photo for your gig:</label>
+                    <span className='label-required'>* Required</span>
                     <input type='file' accept='image/*' onChange={addImage} />
                 </div>
 
