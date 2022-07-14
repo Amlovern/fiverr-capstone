@@ -20,7 +20,7 @@ export default function OrdersPage() {
     useEffect(() => {
         dispatch(orderActions.getAllOrdersThunk(sessionUser?.id));
         dispatch(gigActions.getAllGigsThunk());
-    }, [dispatch])
+    }, [dispatch, sessionUser])
 
     useEffect(() => {
         let ordersArr = [];
@@ -36,10 +36,6 @@ export default function OrdersPage() {
         return null
     }
 
-    // BACKGROUND IMAGE NOT WORKING. NEED TO CONTINUE TESTING AND FIGURE OUT HOW I DID IT BEFORE
-    // Change Order backend to include gig image url
-    console.log(gigsByGigId[1]?.image)
-
     return (
         <div className='user-orders-container'>
             <div className='user-orders-outer-container'>
@@ -51,7 +47,7 @@ export default function OrdersPage() {
                 </div>
                 <div className='orders-container'>
                     {orders?.map((order, idx) => (
-                        <div className='order-details-container' key={idx} style={{backgroundImage: new URL(`${gigsByGigId[order.id]?.image}`)}} >
+                        <div className='order-details-container' key={idx} style={{backgroundImage: `url(${order.gigImage})`}} >
                             <div className='overlay' onClick={() => history.push(`/orders/${order?.id}`)}>
                                 <div className='items'></div>
                                 <div className='items head'>
