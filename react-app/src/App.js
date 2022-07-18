@@ -17,6 +17,7 @@ import OrdersPage from './components/OrdersPage';
 import UpdateOrderForm from './components/UpdateOrderForm';
 import AboutPage from './components/AboutPage';
 import SearchResultsPage from './components/SearchResultsPage';
+import MyGigsPage from './components/MyGigsPage';
 
 import { authenticate } from './store/session';
 
@@ -56,8 +57,11 @@ function App() {
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
         </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
+        <ProtectedRoute path='/users/:userId/orders' exact={true} >
           <OrdersPage />
+        </ProtectedRoute>
+        <ProtectedRoute path='/users/my-gigs' exact={true}>
+          <MyGigsPage />
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <SplashPage />

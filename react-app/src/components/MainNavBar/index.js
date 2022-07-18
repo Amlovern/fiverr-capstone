@@ -5,8 +5,6 @@ import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import SearchBar from '../SearchBar';
 
-import githubLogo from '../../images/github.svg';
-
 const NavBar = () => {
   const currentUser = useSelector((state) => state.session.user);
   const initial = currentUser?.username[0].toUpperCase()
@@ -32,7 +30,7 @@ const NavBar = () => {
           </NavLink>
         </li>
         <li className='navbar-link orders-link'>
-          <NavLink to={`/users/${currentUser.id}`} exact={true} className='navbar-new-gig-link'>
+          <NavLink to={`/users/${currentUser.id}/orders`} exact={true} className='navbar-new-gig-link'>
             My Orders
           </NavLink>
         </li>
