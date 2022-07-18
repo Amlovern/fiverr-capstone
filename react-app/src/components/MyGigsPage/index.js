@@ -12,7 +12,6 @@ export default function MyGigsPage() {
     const allGigs = useSelector((state) => state.gig.gigsByOwnerId);
 
     const usersGigs = allGigs[sessionUser.id];
-    console.log(usersGigs)
 
     useEffect(() => {
         dispatch(gigActions.getAllGigsThunk())
