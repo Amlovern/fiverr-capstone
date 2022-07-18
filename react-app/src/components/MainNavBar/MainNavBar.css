@@ -83,7 +83,7 @@
     color: #1dbf73;
 }
 
-.orders-link, .navbar-new-gig {
+.orders-link, .navbar-my-gigs {
     color: #74767e;
     font-size: 16px;
     font-weight: 600;
@@ -97,7 +97,7 @@
     color: #1dbf73;
 }
 
-.navbar-new-gig *:hover {
+.navbar-my-gigs *:hover {
     color: #1dbf73;
 }
 

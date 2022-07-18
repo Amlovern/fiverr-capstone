@@ -1,6 +1,6 @@
 import './MyGigsPage.css';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import * as gigActions from '../../store/gig';
@@ -26,7 +26,12 @@ export default function MyGigsPage() {
         <div>
             {usersGigs.length > 0 && (
                 <div>
-                    <h2>My Gigs</h2>
+                    <div className='my-gigs-header-container'>
+                        <h2 className='my-gigs-header'>My Gigs</h2>
+                        <div className='new-gig-link-container'>
+                            <a href='/gigs/new'>New Gig</a>
+                        </div>
+                    </div>
                     <div className='search-results-grid'>
                         {usersGigs.map((gig, idx) => (
                             <div className='gig-card-layout' key={idx}>

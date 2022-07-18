@@ -24,9 +24,9 @@ const NavBar = () => {
   if (currentUser) {
     sessionLinks = (
       <>
-        <li className='navbar-link navbar-new-gig'>
-          <NavLink to='/gigs/new' exact={true} className='navbar-new-gig-link'>
-            New Gig
+        <li className='navbar-link navbar-my-gigs'>
+          <NavLink to='/users/my-gigs' exact={true} className='navbar-my-gigs-link'>
+            My Gigs
           </NavLink>
         </li>
         <li className='navbar-link orders-link'>
