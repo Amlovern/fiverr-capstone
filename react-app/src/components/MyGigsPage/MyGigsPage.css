@@ -1,0 +1,47 @@
+.my-gigs-page {
+    background-color: #f7f7f7;
+    height: 100vw;
+}
+
+.my-gigs-header-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 0 auto;
+    color: #62646a;
+    background-color: #ffffff;
+}
+
+.my-gigs-header {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.new-gig-link-container {
+    font-size: 24px;
+    font-weight: 600;
+    padding-bottom: 4%;
+    /* background-color: #ffffff; */
+}
+
+.new-gig-link-container * {
+    color: #74767e;
+}
+
+.no-gigs-found {
+    text-align: center;
+    padding: 8%;
+}
+
+.no-gigs-header {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 3%;
+}
+
+.no-gigs-subheader {
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 2.5%;
+}
