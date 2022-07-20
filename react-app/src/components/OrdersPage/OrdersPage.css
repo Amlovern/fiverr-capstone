@@ -38,7 +38,9 @@
     margin: 15px;
     /* background: linear-gradient(0.25turn, #19a463, #FEF5DF, #1dbf73); */
     /* background-color: black; */
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 0;
     cursor: pointer;
     box-shadow: 0 0 5px #000;
 }
