@@ -19,6 +19,7 @@ import UpdateOrderForm from './components/UpdateOrderForm';
 import AboutPage from './components/AboutPage';
 import SearchResultsPage from './components/SearchResultsPage';
 import MyGigsPage from './components/MyGigsPage';
+import CategoryPage from './components/CategoryPage';
 
 import { authenticate } from './store/session';
 
@@ -88,6 +89,9 @@ function App() {
         </ProtectedRoute>
         <Route path='/search/:query' >
           <SearchResultsPage />
+        </Route>
+        <Route path='/category/:categoryName' >
+          <CategoryPage />
         </Route>
       </Switch>
     </BrowserRouter>
