@@ -103,11 +103,21 @@
     width: 100%;
     height: 100%;
     z-index: 1;
+    background-color: #a7a7a7;
 }
 
 .slide-preview {
     height: 100%;
     overflow: hidden;
+}
+
+.gig-image {
+    height: 100%;
+    width: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 0;
+    cursor: pointer;    
 }
 
 .seller-info {
