@@ -59,7 +59,7 @@ export default function MyGigsPage() {
                                 <a href={`/gigs/${gig.id}`} target="_blank" rel='noreferrer' className='media'>
                                     <div className='slider'>
                                         <div className='slide-preview'>
-                                            <img src={gig.image} alt='gig' />
+                                            <img className='gig-image' src={gig.image} alt='gig' />
                                         </div>
                                     </div>
                                 </a>
