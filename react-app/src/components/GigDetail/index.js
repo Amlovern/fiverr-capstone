@@ -35,7 +35,7 @@ export default function GigDetail() {
         } else {
             dispatch(sessionActions.getUserThunk(currentGig.ownerId))
         }
-    }, [currentGig])
+    }, [currentGig, dispatch])
 
     const handleDelete = (e) => {
         e.preventDefault();
