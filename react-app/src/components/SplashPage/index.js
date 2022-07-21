@@ -30,7 +30,13 @@ const SplashPage = () => {
                     <div className='category-gigs-container'>
                         {gigsByCategoryId[categoryId].map((gig, idx) => (
                             <div className='gig-container' key={idx} onClick={()=>handleRedirect(gig.id)}>
-                                <img className='gig-img' src={gig.image} alt='gig cover'/>
+                                <div className='media'>
+                                    <div className='slider'>
+                                        <div className='slide-preview'>
+                                            <img className='gig-img' src={gig.image} alt='gig cover'/>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div className='gig-title-header'>{gig.title}</div>
                                 <div className='gig-delivery-title'>Average Delivery Timeline: {gig.deliveryTimeline} Days</div>
                                 <div className='splash-gig-price-container'>
