@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import MainNavBar from './components/MainNavBar';
+import InnerNavBar from './components/InnerNavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import SplashPage from './components/SplashPage';
@@ -44,6 +45,7 @@ function App() {
   return (
     <BrowserRouter>
       <MainNavBar />
+      <InnerNavBar />
       <Switch>
         <Route path='/about' exact={true}>
           <AboutPage />
