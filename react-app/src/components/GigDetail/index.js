@@ -22,6 +22,7 @@ export default function GigDetail() {
 
     const gigId = params.gigId;
     const currentGig = gigs.gigsByGigId[gigId];
+    const gigCategory = categories[currentGig?.categoryId]?.name;
 
 
 
@@ -75,7 +76,9 @@ export default function GigDetail() {
         <div className='main-gig-detail-container'>
             <div className='main'>
                 <div className='gig-header-container'>
-                    <div className='gig-category'>Category: {categories[currentGig?.categoryId]?.name}</div>
+                    <div className='gig-category'>Category: 
+                        <a href={`/category/${gigCategory}`} target='_blank' rel='noreferrer' className='category-link'>{gigCategory}</a>
+                    </div>
                     <div className='gig-title'>{currentGig?.title}</div>
                     <div className='gig-header-subdetails'>
                         <div className='gig-header-owner'>{gigOwner?.username}</div>
