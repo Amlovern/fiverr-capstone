@@ -9,10 +9,10 @@ export default function CategoryPage() {
     const params = useParams();
     const dispatch = useDispatch();
     
-    const categoryState = useSelector((state) => state.category.categoriesByCategoryId);
     const gigsState = useSelector((state) => state.gig.gigsByCategoryId);
 
     const [gigs, setGigs] = useState([]);
+    console.log(gigs)
 
     const categoryName = params.categoryName;
 
@@ -26,15 +26,54 @@ export default function CategoryPage() {
             Object.keys(gigsState).forEach((key) => {
                 gigsArr.push(gigsState[key]);
             });
-            setGigs(gigsArr);
+
+            if (categoryName === 'Tabletop') {
+                setGigs(gigsArr[0]);
+            } else if (categoryName === 'Card Game') {
+                setGigs(gigsArr[1]);
+            } else if (categoryName === 'Video Game') {
+                setGigs(gigsArr[2]);
+            } else {
+                setGigs(gigsArr[3]);
+            };
         };
-    }, [gigsState]);
+    }, [gigsState, categoryName]);
 
     if (!gigsState) {
         return null;
     };
 
     return (
-        <div>This is the category page for {categoryName}!</div>
+        <div className='category-main-container'>
+            <h2 className='category-header'>{categoryName}</h2>
+            <div className='search-results-grid'>
+                {gigs?.map((gig, idx) => (
+                    <div className='gig-card-layout' key={idx}>
+                        <div className='gig-wrapper'>
+                            <a href={`/gigs/${gig.id}`} target='_blank' rel='noreferrer' className='media'>
+                                <div className='slider'>
+                                    <div className='slide-preview'>
+                                        <img className='gig-image' src={gig.image} alt='gig' />
+                                    </div>
+                                </div>
+                            </a>
+                            <h3>
+                                <a href={`/gigs/${gig.id}`} target='_blank' rel='noreferrer'>{gig.title}</a>
+                            </h3>
+                            <footer className='search-result-footer'>
+                                <a href={`/gigs/${gig.id}`} target='_blank' rel='noreferrer' className='search-result-price'>
+                                    <small>
+                                        Starting at
+                                    </small>
+                                    <span>
+                                        ${gig.price}
+                                    </span>
+                                </a>
+                            </footer>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
     )
 }
