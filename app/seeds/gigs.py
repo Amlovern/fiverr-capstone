@@ -157,6 +157,117 @@ def seed_gigs():
     returnTimeline=3
   )
 
+  tableTop1 = Gig(
+    ownerId=1,
+    categoryId=1,
+    title='I will write lore for your video or tabletop game',
+    image='https://nerdrr.s3.amazonaws.com/tabletop1.jpg',
+    queue=0,
+    description="Understanding that creative writing is not the main player in video game development, I will strive to fulfill your vision, writing in a way that goes well with your preexisting mechanics and general aesthetic. I will need you to inform me of your specific writing need and I'm willing to meet via video call to fully discuss the gig, so as to make the final product as close to your expectations as possible. Feel free to ask me any questions you may have before placing your order.",
+    price=150,
+    deliveryTimeline=7,
+    returnTimeline=2
+  )
+  tableTop2 = Gig(
+    ownerId=2,
+    categoryId=1,
+    title='I will write music for your tabletop rpg games',
+    image='https://nerdrr.s3.amazonaws.com/tabletop2.jpg',
+    queue=0,
+    description="I want to be sure that you get the music you want so it might take some time to create the best theme song I can write to match your expectations, but when you get your theme I guarantee that you're gonna be satisfied.",
+    price=25,
+    deliveryTimeline=14,
+    returnTimeline=10
+  )
+  tableTop3 = Gig(
+    ownerId=3,
+    categoryId=1,
+    title='I will create fantasy city, region, and world maps for your tabletop games',
+    image='https://nerdrr.s3.amazonaws.com/tabletop3.jpg',
+    queue=0,
+    description="Hi, there traveler! Take a seat by the fire and let me explain to you why I am the perfect place to spend your hard-earned adventurer's gold. Although I am relatively new on Nerdrr, as a forever DM I have been making battle maps for 12 years now. I have progressed from simple pen and paper maps at the dinner table to using professional software to create beautiful 2D and 3D maps in JPEG Form.",
+    price=25,
+    deliveryTimeline=5,
+    returnTimeline=1
+  )
+  tableTop4 = Gig(
+    ownerId=4,
+    categoryId=1,
+    title='I will paint tabletop game models',
+    image='https://nerdrr.s3.amazonaws.com/tabletop4.jpg',
+    queue=0,
+    description="I love painting Warhammer models! I can do a variety of tabletop minis also. I've done models from Age of Sigmar, 40k, Warcry, Warmachine, D&D, custom 3D prints, terrain, and much more. I can paint already assembled or assemble according to instructions. I always use the best paints and glues to make sure the final results are durable.",
+    price=80,
+    deliveryTimeline=7,
+    returnTimeline=0
+  )
+  tableTop5 = Gig(
+    ownerId=5,
+    categoryId=1,
+    title='I will draw dnd character illustration or concept art',
+    image='https://nerdrr.s3.amazonaws.com/tabletop5.jpg',
+    queue=0,
+    description="Start your DnD journey with a visual avatar of your DnD Character destined to make or break the world of fantasy! I will conjure your DnD Character from your imagination to reality. Before I get started, provide the name and backstory of your DnD Character that I may know it more. Provide me the most exciting details, your character's feats of valor, it's scheme and dread and I will do my best to bring perfection to the character art. So roll your dice, check those stats, and ready those spells. I will conjure your character into the realm of Dungeons and dragons!",
+    price=55,
+    deliveryTimeline=7,
+    returnTimeline=1
+  )
+  tableTop6 = Gig(
+    ownerId=1,
+    categoryId=1,
+    title='I will create a board game alongside you',
+    image='https://nerdrr.s3.amazonaws.com/tabletop6.jpg',
+    queue=0,
+    description="The best and most cost-effective assistance you can have in your game project is working closely with who has field experience in game developing and publishing! Game design session alongside you through a call – if you seek other game design tutoring formats, let me know and we can come up with the best solution for your project.",
+    price=30,
+    deliveryTimeline=7,
+    returnTimeline=0
+  )
+  tableTop7 = Gig(
+    ownerId=2,
+    categoryId=1,
+    title='I will sculpt 3d printable miniatures and tabletop games and 3d printing from sketch',
+    image='https://nerdrr.s3.amazonaws.com/tabletop7.jpeg',
+    queue=0,
+    description="I can sculpt from reference or from concept or concept design any sculpt you want, the sky is the limit! or is it ??.. Haha! can sculpt Aliens as well!... so.. no, it's not the limit if you were confused about that.",
+    price=300,
+    deliveryTimeline=7,
+    returnTimeline=2
+  )
+  tableTop8 = Gig(
+    ownerId=3,
+    categoryId=1,
+    title='I will design a board card game with a tabletop, box, and cards',
+    image='https://nerdrr.s3.amazonaws.com/tabletop8.jpg',
+    queue=0,
+    description="We are a game development studio and publisher. We have over 5 years of experience in creating and designing games.",
+    price=500,
+    deliveryTimeline=30,
+    returnTimeline=4
+  )
+  tableTop9 = Gig(
+    ownerId=4,
+    categoryId=1,
+    title='I will create fantasy battlemaps for your tabletop games',
+    image='https://nerdrr.s3.amazonaws.com/tabletop9.jpg',
+    queue=0,
+    description="Hi, there traveler! Take a seat by the fire and let me explain to you why I am the perfect place to spend your hard-earned adventurer's gold. Although I am relatively new on Nerdrr, as a forever DM I have been making battle maps for 12 years now. I have progressed from simple pen and paper maps at the dinner table to using professional software to create beautiful 2D and 3D maps.",
+    price=20,
+    deliveryTimeline=3,
+    returnTimeline=1
+  )
+  tableTop10 = Gig(
+    ownerId=5,
+    categoryId=1,
+    title='I will covert your pictures or illustrations into the jigsaw puzzle',
+    image='https://nerdrr.s3.amazonaws.com/tabletop10.jpg',
+    queue=0,
+    description="Hey! In this gig, I will convert your photos, arts, designs, illustrations into jigsaw puzzles and other Photo effects. I can also make cartoon characters or illustrations and convert them into a jigsaw puzzle. Send me your photos, arts, designs, products, posters, or logos and I will do the rest according to your desire.",
+    price=25,
+    deliveryTimeline=4,
+    returnTimeline=2
+  )
+
 # Initial seed data
   db.session.add(christian)
   db.session.add(james)
@@ -176,6 +287,16 @@ def seed_gigs():
   db.session.add(anime10)
 
 # Additional Tabletop seed data
+  db.session.add(tableTop1)
+  db.session.add(tableTop2)
+  db.session.add(tableTop3)
+  db.session.add(tableTop4)
+  db.session.add(tableTop5)
+  db.session.add(tableTop6)
+  db.session.add(tableTop7)
+  db.session.add(tableTop8)
+  db.session.add(tableTop9)
+  db.session.add(tableTop10)
 
 # Additional Video Game seed data
 
