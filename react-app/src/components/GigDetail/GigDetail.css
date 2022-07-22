@@ -45,7 +45,6 @@
     font-size: 32px;
     border-bottom: #1dbf73 1px solid;
     color: #1dbf73
-    /* text-decoration: underline; */
 }
 
 .gig-price {
@@ -103,6 +102,10 @@
 .gig-category {
     font-size: 14px;
     padding: 0px 0px 10px
+}
+
+.category-link {
+    padding-left: 4px;
 }
 
 .gig-title {

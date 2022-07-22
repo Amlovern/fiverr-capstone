@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import MainNavBar from './components/MainNavBar';
+import InnerNavBar from './components/InnerNavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import SplashPage from './components/SplashPage';
@@ -18,6 +19,7 @@ import UpdateOrderForm from './components/UpdateOrderForm';
 import AboutPage from './components/AboutPage';
 import SearchResultsPage from './components/SearchResultsPage';
 import MyGigsPage from './components/MyGigsPage';
+import CategoryPage from './components/CategoryPage';
 
 import { authenticate } from './store/session';
 
@@ -44,6 +46,7 @@ function App() {
   return (
     <BrowserRouter>
       <MainNavBar />
+      <InnerNavBar />
       <Switch>
         <Route path='/about' exact={true}>
           <AboutPage />
@@ -86,6 +89,9 @@ function App() {
         </ProtectedRoute>
         <Route path='/search/:query' >
           <SearchResultsPage />
+        </Route>
+        <Route path='/category/:categoryName' >
+          <CategoryPage />
         </Route>
       </Switch>
     </BrowserRouter>
