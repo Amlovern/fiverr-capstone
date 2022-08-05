@@ -379,6 +379,126 @@ def seed_gigs():
     returnTimeline=1
   )
 
+  cardGame1 = Gig(
+    ownerId=1,
+    categoryId=2,
+    title='I will design and make professional illustration for card game',
+    image='https://nerdrr.s3.amazonaws.com/cardgame1.png',
+    queue=0,
+    description="I'm an illustrator for about 4 years with some experience in designing card games.",
+    price=25,
+    deliveryTimeline=3,
+    returnTimeline=2
+  )
+
+  cardGame2 = Gig(
+    ownerId=2,
+    categoryId=2,
+    title='I will design card game templates and illustrations, box design and custom tarot cards',
+    image='https://nerdrr.s3.amazonaws.com/cardgame2.png',
+    queue=0,
+    description="Hello there! If you are looking to get any original card templates and/or illustrations and box designs for your board games, card games or tarot deck, then your search ends here. I have designed and illustrated over 3 tarot decks and 4 other game card decks. One of them have been vetted by U.S. Games Inc too.",
+    price=100,
+    deliveryTimeline=6,
+    returnTimeline=2
+  )
+
+  cardGame3 = Gig(
+    ownerId=3,
+    categoryId=2,
+    title='I will design custom playmats for any card game',
+    image='https://nerdrr.s3.amazonaws.com/cardgame3.jpg',
+    queue=0,
+    description="That's Right, I will design for you an Original Custom Playmat (You can use it as a Wallpaper or Mousepad if you wish) for any Card Game (YuGiOh, Pokemon, MTG, Vanguard, Digimon, etc...) Completely filled with your Ideas, and Zones/Custom Zones if you wish to do so. It's going to contain whatever you ask, any Characters, Monsters, or Places of any franchise (Just ask and you shall receive).",
+    price=15,
+    deliveryTimeline=7,
+    returnTimeline=4
+  )
+
+  cardGame4 = Gig(
+    ownerId=4,
+    categoryId=2,
+    title='I will design custom sleeves for any card game',
+    image='https://nerdrr.s3.amazonaws.com/cardgame4.jpg',
+    queue=0,
+    description="I will design for you an Original Custom Sleeve/Oversleeve (You can use it as a Profile Picture or a Wallpaper if you wish) for any Card Game (YuGiOh, Pokemon, MTG, Vanguard, Digimon, etc...) Completely filled with your Ideas. It's going to contain whatever you ask, any Characters, Monsters, or Places of any franchise (Just ask and you shall receive).",
+    price=10,
+    deliveryTimeline=7,
+    returnTimeline=5
+  )
+
+  cardGame5 = Gig(
+    ownerId=5,
+    categoryId=2,
+    title='I will help you build budget a magic the gathering mtg deck',
+    image='https://nerdrr.s3.amazonaws.com/cardgame5.jpg',
+    queue=0,
+    description="If you've ever had the problem of wanting to play MtG but didn't know what deck to pick and didn't find much help online due to not having the meta cards, I feel you. I've been playing standard and modern for a couple of years on a budget and have become quite good a building decks out of stuff lying around or cards that don't break the bank. I'll help you build a deck that has a gameplan that it wants to stick to, plan around possible matchups and suggest which cards you should try and obtain, within reason of course.",
+    price=5,
+    deliveryTimeline=1,
+    returnTimeline=1
+  )
+
+  cardGame6 = Gig(
+    ownerId=1,
+    categoryId=2,
+    title='I will do customize magic the gathering cards',
+    image='https://nerdrr.s3.amazonaws.com/cardgame6.png',
+    queue=0,
+    description="I will illustrate and design your customize Magic The Card. Choose the Maze Color, Type, Character Type, Character Race, Characteristics, and I will do your Card.",
+    price=25,
+    deliveryTimeline=4,
+    returnTimeline=1
+  )
+
+  cardGame7 = Gig(
+    ownerId=2,
+    categoryId=2,
+    title='I will paint high quality alters for mtg cards',
+    image='https://nerdrr.s3.amazonaws.com/cardgame7.jpg',
+    queue=0,
+    description="I'll Alter your Magic: The Gathering Cards! You can send me your Mtg Cards or I can buy them for you, in this case I'll add it to the price. My Alters are all Hand Painted with professional Acrylic Paints.",
+    price=45,
+    deliveryTimeline=14,
+    returnTimeline=5
+  )
+
+  cardGame8 = Gig(
+    ownerId=3,
+    categoryId=2,
+    title='I will build a tcg hobby store with automated pricing',
+    image='https://nerdrr.s3.amazonaws.com/cardgame8.jpg',
+    queue=0,
+    description="Hello there, fellow TCG enthusiasts! I'm an avid MTG player and I build hobby stores for a living. I build my stores on Shopify using BinderPOS for the backend.",
+    price=150,
+    deliveryTimeline=7,
+    returnTimeline=3
+  )
+
+  cardGame9 = Gig(
+    ownerId=4,
+    categoryId=2,
+    title='I will teach you how to play yugioh',
+    image='https://nerdrr.s3.amazonaws.com/cardgame9.jpg',
+    queue=0,
+    description="Yu-Gi-Oh! is a highly complex card game; it can be very daunting to start learning how to play it. The official rulebook can be confusing and sometimes describes important rules quite vaguely. That is why I am offering this service. I spent over 20 hours creating a detailed and easy-to-understand PowerPoint presentation which puts all the rules in one place and gives you examples of how they work. I will go through the presentation during the session and explain how each rule works. You will be able to ask any questions you have during that time. I can teach you the entirety of the game's rules or explain some specific rules you've been struggling to comprehend. I can also help you if you're someone who played Yu-Gi-Oh! in the past and has been finding it challenging to learn the new rules after returning years later.",
+    price=5,
+    deliveryTimeline=3,
+    returnTimeline=3
+  )
+
+  cardGame10 = Gig(
+    ownerId=5,
+    categoryId=2,
+    title='I will create a customized tcg pokémon trainer card for you',
+    image='https://nerdrr.s3.amazonaws.com/cardgame10.jpg',
+    queue=0,
+    description="If you're a big fan of Pokémon? Been playing with Pokemon TCG Cards? Here's the chance to have your own personalized pokemon trainer card with you like the Pokémon Trainer. I will illustrate you as a Pokémon trainer, with a photo background of your choice, and the description of attacks/skills you want and you will have a unique and personalized TCG Pokémon Card. ",
+    price=25,
+    deliveryTimeline=7,
+    returnTimeline=2
+  )
+
 # Initial seed data
   db.session.add(christian)
   db.session.add(james)
