@@ -394,7 +394,7 @@ def seed_gigs():
   cardGame2 = Gig(
     ownerId=2,
     categoryId=2,
-    title='I will design card game templates and illustrations, box design and custom tarot cards',
+    title='I will design card game templates and illustrations',
     image='https://nerdrr.s3.amazonaws.com/cardgame2.png',
     queue=0,
     description="Hello there! If you are looking to get any original card templates and/or illustrations and box designs for your board games, card games or tarot deck, then your search ends here. I have designed and illustrated over 3 tarot decks and 4 other game card decks. One of them have been vetted by U.S. Games Inc too.",
@@ -542,6 +542,17 @@ def seed_gigs():
   db.session.add(videoGame10)
 
 # Additional Card Game seed data
+  db.session.add(cardGame1)
+  db.session.add(cardGame2)
+  db.session.add(cardGame3)
+  db.session.add(cardGame4)
+  db.session.add(cardGame5)
+  db.session.add(cardGame6)
+  db.session.add(cardGame7)
+  db.session.add(cardGame8)
+  db.session.add(cardGame9)
+  db.session.add(cardGame10)
+
 
   db.session.commit()
 

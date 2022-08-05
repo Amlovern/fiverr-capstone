@@ -8,7 +8,7 @@ class Gig(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   ownerId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
   categoryId = db.Column(db.Integer, db.ForeignKey('categories.id'), nullable=False)
-  title = db.Column(db.String(50), nullable=False)
+  title = db.Column(db.String(100), nullable=False)
   image = db.Column(db.String(1000))
   queue = db.Column(db.Integer, nullable=False)
   description = db.Column(db.Text)
