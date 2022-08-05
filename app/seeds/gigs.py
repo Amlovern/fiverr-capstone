@@ -268,6 +268,117 @@ def seed_gigs():
     returnTimeline=2
   )
 
+  videoGame1 = Gig(
+    ownerId=1,
+    categoryId=3,
+    title='I will record a character voice over for video games and animation',
+    image='https://nerdrr.s3.amazonaws.com/videogame1.jpg',
+    queue=0,
+    description="MY #1 GOAL IS TO OFFER YOU KILLER MALE CARTOON, ANIMATION OR CHARACTER VOICES FOR VIDEOS GAMES, CARTOONS, ANIMATIONS, CHILDREN'S STORIES, APPS OR PHONE MESSAGES!",
+    price=15,
+    deliveryTimeline=1,
+    returnTimeline=0
+  )
+  videoGame2 = Gig(
+    ownerId=2,
+    categoryId=3,
+    title='I will do a funny gaming video edit for youtube',
+    image='https://nerdrr.s3.amazonaws.com/videogame2.jpg',
+    queue=0,
+    description="I never like to Rush my edits, I prefer quality over quantity(Typical, Huh), and yes, I'm very much transparent with my work and Relationship with my Clients :)",
+    price=70,
+    deliveryTimeline=7,
+    returnTimeline=2
+  )
+  videoGame3 = Gig(
+    ownerId=3,
+    categoryId=3,
+    title='I will produce original professional music for your video game',
+    image='https://nerdrr.s3.amazonaws.com/videogame3.jpg',
+    queue=0,
+    description="I will produce an original piece of music for your game. The song can be whatever style you need, I am fully flexible!",
+    price=25,
+    deliveryTimeline=7,
+    returnTimeline=4
+  )
+  videoGame4 = Gig(
+    ownerId=4,
+    categoryId=3,
+    title='I will 3d character modeling realistic or stylized for video games or animations',
+    image='https://nerdrr.s3.amazonaws.com/videogame4.jpg',
+    queue=0,
+    description="Do you need a 3d model of a character? Hello, I adapt to many styles and I always try to make my work as good as possible.",
+    price=185,
+    deliveryTimeline=10,
+    returnTimeline=3
+  )
+  videoGame5 = Gig(
+    ownerId=5,
+    categoryId=3,
+    title='I will create professional mobile promo video for apps and games',
+    image='https://nerdrr.s3.amazonaws.com/videogame5.jpg',
+    queue=0,
+    description="I will Create 30 Second Promo Video for your Apps/Games. I will record video or screenshots of your App and game from APK. I will add best captions to pointing out key features your app and game. I will add amazing intro and outro in your app game promo video. I will add best suitable music.",
+    price=20,
+    deliveryTimeline=2,
+    returnTimeline=1
+  )
+  videoGame6 = Gig(
+    ownerId=1,
+    categoryId=3,
+    title='I will record evil video game creature or cartoon character voice',
+    image='https://nerdrr.s3.amazonaws.com/videogame6.jpg',
+    queue=0,
+    description="Hi, thanks for stopping by! I provide voice overs and voice acting for animation, cartoon and video game characters. I know what makes a character engaging and believable!",
+    price=150,
+    deliveryTimeline=3,
+    returnTimeline=1
+  )
+  videoGame7 = Gig(
+    ownerId=2,
+    categoryId=3,
+    title='I will compose chiptune or 8 bit music for your video game',
+    image='https://nerdrr.s3.amazonaws.com/videogame7.jpg',
+    queue=0,
+    description="I will make you NES / Chiptune / 8 bit style music for you. I can make pretty much any style or vibes you want.",
+    price=20,
+    deliveryTimeline=7,
+    returnTimeline=0
+  )
+  videoGame8 = Gig(
+    ownerId=3,
+    categoryId=3,
+    title='I will create cinematic game trailer teaser promo video',
+    image='https://nerdrr.s3.amazonaws.com/videogame8.jpg',
+    queue=0,
+    description="I will make a short cinematic and epic movie trailer, game trailer or, book trailer or teaser for you, Introducing a new High-Quality Epic Cinematic Trailer to perfectly feature your product in Top Listings.",
+    price=10,
+    deliveryTimeline=2,
+    returnTimeline=1
+  )
+  videoGame9 = Gig(
+    ownerId=4,
+    categoryId=3,
+    title='I will write your video game script or dialogue',
+    image='https://nerdrr.s3.amazonaws.com/videogame9.jpg',
+    queue=0,
+    description="The code and the models are coming together. You've spent some time on the UI, on the cutscenes, and way too much time on the foliage. Your main character, in their first cut scene, sword sweeping wildly through the air--explosions going off in the background--turns to your Big Bad Guy, and says.... Well, what does he say? Whether you need a full plot and outline treatment of your story ideas, plucky dialogue options, or quests ideas, let me take care of that part for you.",
+    price=45,
+    deliveryTimeline=3,
+    returnTimeline=3
+  )
+  videoGame10 = Gig(
+    ownerId=5,
+    categoryId=3,
+    title='I will write excellent video game related articles',
+    image='https://nerdrr.s3.amazonaws.com/videogame10.jpg',
+    queue=0,
+    description="With this Gig, I will provide a well written article on any facet of the gaming industry. Do you need a game reviewed? I can do that. Perhaps you need someone to cover a Nintendo Direct? I'm your guy. I am a lifelong gamer and am heavily invested in the industry, so from handhelds to PCs to cloud gaming, I can write about it all.",
+    price=20,
+    deliveryTimeline=2,
+    returnTimeline=1
+  )
+
 # Initial seed data
   db.session.add(christian)
   db.session.add(james)
@@ -299,6 +410,16 @@ def seed_gigs():
   db.session.add(tableTop10)
 
 # Additional Video Game seed data
+  db.session.add(videoGame1)
+  db.session.add(videoGame2)
+  db.session.add(videoGame3)
+  db.session.add(videoGame4)
+  db.session.add(videoGame5)
+  db.session.add(videoGame6)
+  db.session.add(videoGame7)
+  db.session.add(videoGame8)
+  db.session.add(videoGame9)
+  db.session.add(videoGame10)
 
 # Additional Card Game seed data
 
