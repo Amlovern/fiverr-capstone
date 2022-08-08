@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: b18d02bd07e0
-Revises: 
-Create Date: 2022-06-09 19:10:44.072195
+Revision ID: 804d7538a8d0
+Revises: 97290f2c80fd
+Create Date: 2022-08-05 19:28:55.721225
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'b18d02bd07e0'
-down_revision = None
+revision = '804d7538a8d0'
+down_revision = '97290f2c80fd'
 branch_labels = None
 depends_on = None
 
@@ -42,7 +42,7 @@ def upgrade():
     sa.Column('ownerId', sa.Integer(), nullable=False),
     sa.Column('categoryId', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(length=100), nullable=False),
-    sa.Column('image', sa.String(length=255), nullable=False),
+    sa.Column('image', sa.String(length=1000), nullable=True),
     sa.Column('queue', sa.Integer(), nullable=False),
     sa.Column('description', sa.Text(), nullable=True),
     sa.Column('price', sa.Integer(), nullable=False),
@@ -58,6 +58,8 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('userId', sa.Integer(), nullable=False),
     sa.Column('gigId', sa.Integer(), nullable=False),
+    sa.Column('gigImage', sa.String(length=1000), nullable=True),
+    sa.Column('deliveryInstructions', sa.Text(), nullable=True),
     sa.Column('placed', sa.DateTime(), nullable=False),
     sa.Column('due', sa.DateTime(), nullable=False),
     sa.Column('createdAt', sa.DateTime(), server_default=sa.text('now()'), nullable=False),
