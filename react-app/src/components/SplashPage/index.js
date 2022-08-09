@@ -19,7 +19,7 @@ const SplashPage = () => {
 
     useEffect(() => {
         dispatch(gigActions.getAllGigsThunk());
-    }, [dispatch])
+    }, [dispatch]) 
 
     return (
         <div className='splash-page-main'>
